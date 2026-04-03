@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mon Espace — Notes & Tâches</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-header">
+        <h1>Mon Espace</h1>
+      </div>
+      <ul class="nav-list">
+        <li>
+          <button class="nav-item active" data-section="notes">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+            Notes / Documents
+          </button>
+        </li>
+        <li>
+          <button class="nav-item" data-section="tasks">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 11l3 3L22 4"/>
+              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+            </svg>
+            Tâches / Projets
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+      <!-- ===== NOTES SECTION ===== -->
+      <section id="notes-section" class="section">
+        <div class="section-header">
+          <h2>Notes / Documents</h2>
+          <button class="btn-primary" id="btn-add-note">+ Nouvelle note</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+          <input type="text" class="search-input" id="notes-search" placeholder="Rechercher une note...">
+          <select id="notes-filter-category" class="filter-select">
+            <option value="">Toutes les catégories</option>
+          </select>
+          <input type="date" id="notes-filter-date" class="filter-date" title="Filtrer par date">
+        </div>
+
+        <!-- Notes List -->
+        <div class="list-container" id="notes-list">
+          <div class="empty-state">Aucune note pour le moment. Créez-en une !</div>
+        </div>
+
+        <!-- Note Modal -->
+        <div class="modal-overlay" id="note-modal">
+          <div class="modal">
+            <div class="modal-header">
+              <h3 id="note-modal-title">Nouvelle note</h3>
+              <button class="btn-close" id="btn-close-note">&times;</button>
+            </div>
+            <form id="note-form">
+              <input type="hidden" id="note-id">
+              <div class="form-group">
+                <label for="note-title">Titre</label>
+                <input type="text" id="note-title" required placeholder="Titre de la note">
+              </div>
+              <div class="form-group">
+                <label for="note-category">Catégorie</label>
+                <input type="text" id="note-category" placeholder="Général" value="Général">
+              </div>
+              <div class="form-group">
+                <label for="note-content">Contenu</label>
+                <textarea id="note-content" rows="10" placeholder="Écrivez votre note ici..."></textarea>
+              </div>
+              <div class="modal-actions">
+                <button type="button" class="btn-secondary" id="btn-cancel-note">Annuler</button>
+                <button type="submit" class="btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===== TASKS SECTION ===== -->
+      <section id="tasks-section" class="section hidden">
+        <div class="section-header">
+          <h2>Tâches / Projets</h2>
+          <button class="btn-primary" id="btn-add-task">+ Nouvelle tâche</button>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-bar">
+          <input type="text" class="search-input" id="tasks-search" placeholder="Rechercher une tâche...">
+          <select id="tasks-filter-category" class="filter-select">
+            <option value="">Toutes les catégories</option>
+          </select>
+          <select id="tasks-filter-status" class="filter-select">
+            <option value="">Tous les statuts</option>
+            <option value="À faire">À faire</option>
+            <option value="En cours">En cours</option>
+            <option value="Terminé">Terminé</option>
+          </select>
+          <input type="date" id="tasks-filter-date" class="filter-date" title="Filtrer par échéance">
+        </div>
+
+        <!-- Tasks List -->
+        <div class="list-container" id="tasks-list">
+          <div class="empty-state">Aucune tâche pour le moment. Créez-en une !</div>
+        </div>
+
+        <!-- Task Modal -->
+        <div class="modal-overlay" id="task-modal">
+          <div class="modal">
+            <div class="modal-header">
+              <h3 id="task-modal-title">Nouvelle tâche</h3>
+              <button class="btn-close" id="btn-close-task">&times;</button>
+            </div>
+            <form id="task-form">
+              <input type="hidden" id="task-id">
+              <div class="form-group">
+                <label for="task-title">Titre</label>
+                <input type="text" id="task-title" required placeholder="Titre de la tâche">
+              </div>
+              <div class="form-group">
+                <label for="task-category">Catégorie</label>
+                <input type="text" id="task-category" placeholder="Général" value="Général">
+              </div>
+              <div class="form-group">
+                <label for="task-status">Statut</label>
+                <select id="task-status">
+                  <option value="À faire">À faire</option>
+                  <option value="En cours">En cours</option>
+                  <option value="Terminé">Terminé</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="task-due-date">Date d'échéance</label>
+                <input type="date" id="task-due-date">
+              </div>
+              <div class="form-group">
+                <label for="task-description">Description</label>
+                <textarea id="task-description" rows="6" placeholder="Décrivez la tâche..."></textarea>
+              </div>
+              <div class="modal-actions">
+                <button type="button" class="btn-secondary" id="btn-cancel-task">Annuler</button>
+                <button type="submit" class="btn-primary">Enregistrer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- Toast notifications -->
+  <div id="toast-container"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="app.js"></script>
+</body>
+</html>
