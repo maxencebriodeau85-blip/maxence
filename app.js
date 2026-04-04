@@ -4,6 +4,18 @@
 document.documentElement.classList.add('js-loaded');
 
 // ============================================================
+// Urgency banner close
+// ============================================================
+const urgencyBanner = document.getElementById('urgency-banner');
+const urgencyClose = document.getElementById('urgency-close');
+
+if (urgencyBanner && urgencyClose) {
+  urgencyClose.addEventListener('click', () => {
+    urgencyBanner.classList.add('hidden');
+  });
+}
+
+// ============================================================
 // Smooth scroll navigation
 // ============================================================
 document.querySelectorAll('a[href^="#"]').forEach(link => {

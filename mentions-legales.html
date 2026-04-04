@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mentions légales — Proxeo</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%23FF5500'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='24'>P</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -11,23 +12,19 @@
 </head>
 <body>
 
-  <!-- Navigation -->
   <header class="navbar">
     <div class="navbar-inner">
       <a href="/" class="logo" aria-label="Proxeo accueil">
-        <div class="logo-icon">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="8" fill="#FF5500"/>
-            <path d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H18V22H20C20.5304 22 21.0391 21.7893 21.4142 21.4142C21.7893 21.0391 22 20.5304 22 20C22 19.4696 21.7893 18.9609 21.4142 18.5858C21.0391 18.2107 20.5304 18 20 18H18V28H12Z" fill="white"/>
-          </svg>
+        <div class="logo-icon-block">P</div>
+        <div class="logo-wordmark">
+          <span class="logo-wordmark-text">PRO<span class="text-orange">X</span>EO</span>
+          <span class="logo-underline"></span>
         </div>
-        <span class="logo-text">PRO<span class="text-orange">X</span>EO</span>
       </a>
       <a href="/" class="btn btn-orange" style="font-size:0.875rem;padding:10px 20px;">Retour au site</a>
     </div>
   </header>
 
-  <!-- Content -->
   <section class="legal-page">
     <div class="container">
       <h1 class="legal-title">Mentions légales</h1>
@@ -37,7 +34,7 @@
         <p><strong>Nom :</strong> Maxence Briodeau</p>
         <p><strong>Statut :</strong> Consultant comptable indépendant</p>
         <p><strong>Adresse :</strong> Vendée, France</p>
-        <p><strong>Email :</strong> maxence.briodeau85@gmail.com</p>
+        <p><strong>Email :</strong> <a href="mailto:contact@proxeo.fr" style="color:#FF5500;">contact@proxeo.fr</a></p>
       </div>
 
       <div class="legal-section">
@@ -47,35 +44,40 @@
 
       <div class="legal-section">
         <h2>Propriété intellectuelle</h2>
-        <p>L'ensemble du contenu de ce site (textes, visuels, logo) est la propriété exclusive de Proxeo. Toute reproduction sans autorisation est interdite.</p>
+        <p>L'ensemble du contenu de ce site (textes, visuels, logo) est la propriété exclusive de Proxeo. Toute reproduction sans autorisation écrite est interdite.</p>
       </div>
 
       <div class="legal-section" id="rgpd">
         <h2>Données personnelles (RGPD)</h2>
-        <p>Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à vos demandes. Elles ne sont jamais cédées à des tiers.</p>
-        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression. Pour exercer ce droit : <a href="mailto:maxence.briodeau85@gmail.com" style="color:#FF5500;">maxence.briodeau85@gmail.com</a></p>
+        <p>Les données collectées via le formulaire de contact (nom, email, message) sont utilisées uniquement pour répondre à vos demandes. Elles ne sont jamais transmises à des tiers.</p>
+        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression en écrivant à <a href="mailto:contact@proxeo.fr" style="color:#FF5500;">contact@proxeo.fr</a>.</p>
       </div>
 
       <div class="legal-section">
         <h2>Cookies</h2>
-        <p>Ce site n'utilise pas de cookies de traçage.</p>
+        <p>Ce site n'utilise aucun cookie de traçage ou publicitaire.</p>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <span class="logo-text logo-text-white">PRO<span class="text-orange">X</span>EO</span>
+        <div class="logo" style="gap:10px;">
+          <div class="logo-icon-block logo-icon-block-sm">P</div>
+          <div class="logo-wordmark">
+            <span class="logo-wordmark-text logo-text-white">PRO<span class="text-orange">X</span>EO</span>
+            <span class="logo-underline"></span>
+          </div>
+        </div>
       </div>
       <div class="footer-center">
-        &copy; 2026 Proxeo &middot; Tous droits réservés
+        <div class="footer-center-row">&copy; 2026 Proxeo &middot; Tous droits réservés</div>
       </div>
       <div class="footer-right">
         <span class="footer-location">Vendée, France</span>
-        <a href="/mentions-legales" class="footer-link">Mentions légales</a>
-        <a href="/mentions-legales#rgpd" class="footer-link">Politique de confidentialité</a>
+        <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+        <a href="cgv.html" class="footer-link">CGV</a>
       </div>
     </div>
   </footer>

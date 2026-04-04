@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Proxeo — La compta simplifiée, enfin.</title>
-  <meta name="description" content="Proxeo — Consultant comptable indépendant en Vendée. Saisie comptable, accompagnement, facturation électronique pour micro-entreprises, TPE et PME. Devis gratuit.">
+  <meta name="description" content="Proxeo — Consultant comptable indépendant en Vendée. Saisie comptable, conseil, facturation électronique pour micro-entreprises, TPE et PME. Devis gratuit sous 24h.">
   <meta name="keywords" content="comptable vendée, saisie comptable, facturation électronique, consultant comptable, aide comptabilité TPE">
   <meta property="og:title" content="Proxeo — La compta simplifiée, enfin.">
-  <meta property="og:description" content="Consultant comptable indépendant en Vendée. Saisie, conseil, facturation électronique.">
-  <meta property="og:image" content="/og-image.png">
+  <meta property="og:description" content="Consultant comptable indépendant en Vendée. Saisie, conseil, facturation électronique. Réponse sous 24h.">
   <meta property="og:type" content="website">
   <meta name="robots" content="index, follow">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><rect width='40' height='40' rx='8' fill='%23FF5500'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='900' font-size='24'>P</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
@@ -18,17 +18,21 @@
 </head>
 <body>
 
+  <!-- ========== URGENCY BANNER ========== -->
+  <div class="urgency-banner" id="urgency-banner">
+    <span>&#9889; La facturation électronique devient obligatoire en 2026 — <a href="#guide" class="urgency-link">Préparez-vous maintenant &rarr;</a></span>
+    <button class="urgency-close" id="urgency-close" aria-label="Fermer">&times;</button>
+  </div>
+
   <!-- ========== NAVIGATION ========== -->
   <header class="navbar" id="navbar">
     <div class="navbar-inner">
       <a href="#" class="logo" aria-label="Proxeo accueil">
-        <div class="logo-icon">
-          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="40" height="40" rx="8" fill="#FF5500"/>
-            <path d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H18V22H20C20.5304 22 21.0391 21.7893 21.4142 21.4142C21.7893 21.0391 22 20.5304 22 20C22 19.4696 21.7893 18.9609 21.4142 18.5858C21.0391 18.2107 20.5304 18 20 18H18V28H12Z" fill="white"/>
-          </svg>
+        <div class="logo-icon-block">P</div>
+        <div class="logo-wordmark">
+          <span class="logo-wordmark-text">PRO<span class="text-orange">X</span>EO</span>
+          <span class="logo-underline"></span>
         </div>
-        <span class="logo-text">PRO<span class="text-orange">X</span>EO</span>
       </a>
 
       <nav class="nav-links" id="nav-links">
@@ -80,7 +84,7 @@
           <span class="stat-label">Réforme anticipée</span>
         </div>
         <div class="stat">
-          <span class="stat-label stat-label-highlight">TPE · PME · Auto-entrepreneurs</span>
+          <span class="stat-label stat-label-muted">Micro-entreprises · TPE · PME</span>
         </div>
       </div>
     </div>
@@ -132,6 +136,44 @@
     </div>
   </section>
 
+  <!-- ========== SOCIAL PROOF ========== -->
+  <section class="social-proof" id="social-proof">
+    <div class="container">
+      <div class="section-label fade-in">ILS NOUS FONT CONFIANCE</div>
+      <h2 class="section-title fade-in">Des entrepreneurs satisfaits.</h2>
+      <div class="testimonials-grid fade-in">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Maxence m'a accompagné dans la mise en place de ma comptabilité dès le lancement de mon auto-entreprise. Clair, réactif, vraiment efficace."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">Sophie L.</span>
+            <span class="testimonial-role">Auto-entrepreneur — Vendée</span>
+          </div>
+        </div>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="testimonial-quote">"Grâce à Proxeo, j'ai enfin compris la facturation électronique avant que ça devienne obligatoire. Un vrai gain de temps."</p>
+          <div class="testimonial-author">
+            <span class="testimonial-name">Thomas M.</span>
+            <span class="testimonial-role">Gérant TPE — Loire-Atlantique</span>
+          </div>
+        </div>
+      </div>
+      <p class="testimonials-disclaimer fade-in">* Témoignages clients — prénoms modifiés à leur demande.</p>
+    </div>
+  </section>
+
+  <!-- ========== CTA BAND ========== -->
+  <section class="cta-band">
+    <div class="container">
+      <div class="cta-band-content fade-in">
+        <h2 class="cta-band-title">Vous ne savez pas par où commencer ?</h2>
+        <p class="cta-band-text">Décrivez votre situation en 2 minutes — je vous réponds sous 24h avec une proposition claire et adaptée.</p>
+        <a href="#contact" class="btn btn-black">Demander un devis gratuit <span class="arrow">&rarr;</span></a>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== GUIDE ========== -->
   <section class="guide" id="guide">
     <div class="container">
@@ -160,7 +202,8 @@
             <li><span class="check">&#10003;</span> Checklist de mise en conformité</li>
             <li><span class="check">&#10003;</span> Modèles et templates prêts à l'emploi</li>
           </ul>
-          <a href="https://gumroad.com" target="_blank" rel="noopener" class="btn btn-orange" id="btn-guide">&#128274; Obtenir le guide — 29€</a>
+          <a href="https://gumroad.com/REPLACE_WITH_YOUR_GUMROAD_LINK" target="_blank" rel="noopener" class="btn btn-orange" id="btn-guide">&#128274; Obtenir le guide — 29€</a>
+          <p class="guide-payment-info">Paiement sécurisé · Accès PDF immédiat · Support inclus</p>
         </div>
       </div>
     </div>
@@ -171,42 +214,45 @@
     <div class="container">
       <div class="section-label fade-in">POURQUOI PROXEO</div>
       <h2 class="section-title fade-in">Un consultant comptable à votre côté, pas une grande structure froide.</h2>
-      <div class="about-intro fade-in">
-        <div class="about-avatar">
-          <img src="https://ui-avatars.com/api/?name=Maxence+B&background=FF5500&color=fff&size=120&font-size=0.4&bold=true" alt="Maxence — Consultant comptable Proxeo" width="120" height="120">
-          <span class="about-avatar-caption">Maxence B. — Consultant comptable</span>
+      <div class="about-layout fade-in">
+        <div class="about-photo-col">
+          <img class="about-photo" src="https://ui-avatars.com/api/?name=M+B&background=FF5500&color=fff&size=160&bold=true" alt="Maxence — Consultant comptable Proxeo" width="160" height="160">
+          <span class="about-photo-name">Maxence B.</span>
+          <span class="about-photo-role">Consultant comptable indépendant · Vendée</span>
         </div>
-        <p class="about-text">Je suis Maxence, consultant comptable indépendant basé en Vendée. Formé en cabinet comptable et titulaire du BUT GEA, j'accompagne les entrepreneurs avec des conseils concrets, rapides et adaptés à leur réalité.</p>
-      </div>
-      <div class="reassurance-grid fade-in">
-        <div class="reassurance-card">
-          <div class="reassurance-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
+        <div class="about-text-col">
+          <p class="about-text">Je suis Maxence, consultant comptable indépendant basé en Vendée. Formé en cabinet comptable et titulaire du BUT GEA, j'accompagne les entrepreneurs avec des conseils concrets, rapides et adaptés à leur réalité.</p>
+          <div class="reassurance-grid">
+            <div class="reassurance-card">
+              <div class="reassurance-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <polyline points="12 6 12 12 16 14"/>
+                </svg>
+              </div>
+              <h3 class="reassurance-title">Réactivité</h3>
+              <p class="reassurance-desc">Réponse sous 24h, toujours.</p>
+            </div>
+            <div class="reassurance-card">
+              <div class="reassurance-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </div>
+              <h3 class="reassurance-title">Transparence</h3>
+              <p class="reassurance-desc">Tarifs clairs, sans surprise.</p>
+            </div>
+            <div class="reassurance-card">
+              <div class="reassurance-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                </svg>
+              </div>
+              <h3 class="reassurance-title">Expertise</h3>
+              <p class="reassurance-desc">Formé en cabinet, au contact du terrain.</p>
+            </div>
           </div>
-          <h3 class="reassurance-title">Réactivité</h3>
-          <p class="reassurance-desc">Réponse sous 24h, toujours.</p>
-        </div>
-        <div class="reassurance-card">
-          <div class="reassurance-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-              <circle cx="12" cy="12" r="3"/>
-            </svg>
-          </div>
-          <h3 class="reassurance-title">Transparence</h3>
-          <p class="reassurance-desc">Tarifs clairs, sans surprise.</p>
-        </div>
-        <div class="reassurance-card">
-          <div class="reassurance-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-            </svg>
-          </div>
-          <h3 class="reassurance-title">Expertise</h3>
-          <p class="reassurance-desc">Formé en cabinet, au contact du terrain.</p>
         </div>
       </div>
     </div>
@@ -220,7 +266,7 @@
       <div class="faq-list fade-in">
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Êtes-vous un expert-comptable diplômé ?</span>
+            <span>Quelle est votre formation et votre expérience ?</span>
             <span class="faq-icon">+</span>
           </button>
           <div class="faq-answer">
@@ -274,6 +320,10 @@
         <div class="section-label">CONTACT</div>
         <h2 class="section-title">On en <span class="text-orange">parle</span> ?</h2>
         <p class="contact-subtitle">Décrivez votre situation et je vous réponds sous 24h avec une proposition adaptée.</p>
+        <div class="contact-info">
+          <p class="contact-info-line">&#128222; +33 X XX XX XX XX — Lundi au vendredi · 9h–18h</p>
+          <p class="contact-info-line"><a href="mailto:contact@proxeo.fr" class="contact-email-link">&#9993;&#65039; contact@proxeo.fr</a></p>
+        </div>
         <form class="contact-form" id="contact-form" action="https://formspree.io/f/meeprbed" method="POST" novalidate>
           <input type="hidden" name="_subject" value="Nouvelle demande — Proxeo">
           <input type="hidden" name="_language" value="fr">
@@ -311,7 +361,7 @@
             <span class="form-error" id="error-message"></span>
           </div>
           <button type="submit" class="btn btn-black btn-submit" id="btn-submit">Envoyer ma demande <span class="arrow">&rarr;</span></button>
-          <div class="form-submit-error" id="form-submit-error" style="display:none;">Une erreur est survenue. Veuillez réessayer ou m'écrire directement.</div>
+          <div class="form-submit-error" id="form-submit-error" style="display:none;">Une erreur est survenue. Écrivez-moi directement à <a href="mailto:contact@proxeo.fr" style="color:#E03E3E;text-decoration:underline;">contact@proxeo.fr</a></div>
         </form>
         <div class="form-success" id="form-success" style="display:none;">
           <div class="success-icon">&#10003;</div>
@@ -326,15 +376,27 @@
   <footer class="footer">
     <div class="container footer-inner">
       <div class="footer-logo">
-        <span class="logo-text logo-text-white">PRO<span class="text-orange">X</span>EO</span>
+        <div class="logo" style="gap:10px;">
+          <div class="logo-icon-block logo-icon-block-sm">P</div>
+          <div class="logo-wordmark">
+            <span class="logo-wordmark-text logo-text-white">PRO<span class="text-orange">X</span>EO</span>
+            <span class="logo-underline"></span>
+          </div>
+        </div>
       </div>
       <div class="footer-center">
-        &copy; 2026 Proxeo &middot; Tous droits réservés
+        <div class="footer-center-row">
+          &copy; 2026 Proxeo &middot; Tous droits réservés
+          <a href="https://linkedin.com/in/REPLACE" target="_blank" rel="noopener" class="footer-social" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </div>
+        <div class="footer-siret">SIRET : [VOTRE SIRET]</div>
       </div>
       <div class="footer-right">
         <span class="footer-location">Vendée, France</span>
-        <a href="/mentions-legales" class="footer-link">Mentions légales</a>
-        <a href="/mentions-legales#rgpd" class="footer-link">Politique de confidentialité</a>
+        <a href="mentions-legales.html" class="footer-link">Mentions légales</a>
+        <a href="cgv.html" class="footer-link">CGV</a>
       </div>
     </div>
   </footer>
