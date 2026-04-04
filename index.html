@@ -3,169 +3,327 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mon Espace - Notes & Tâches</title>
+  <title>Proxeo — La compta simplifiée, enfin.</title>
+  <meta name="description" content="Proxeo accompagne les micro-entreprises, TPE et PME dans leur gestion comptable — saisie, conseils, facturation électronique. Simple, humain, efficace.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=Syne:wght@700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="app">
-    <!-- Sidebar -->
-    <nav class="sidebar">
-      <div class="sidebar-header">
-        <h1>Mon Espace</h1>
+
+  <!-- ========== NAVIGATION ========== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="logo" aria-label="Proxeo accueil">
+        <div class="logo-icon">
+          <svg width="32" height="32" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="40" height="40" rx="8" fill="#FF5500"/>
+            <path d="M12 28V12H20C22.1217 12 24.1566 12.8429 25.6569 14.3431C27.1571 15.8434 28 17.8783 28 20C28 22.1217 27.1571 24.1566 25.6569 25.6569C24.1566 27.1571 22.1217 28 20 28H18V22H20C20.5304 22 21.0391 21.7893 21.4142 21.4142C21.7893 21.0391 22 20.5304 22 20C22 19.4696 21.7893 18.9609 21.4142 18.5858C21.0391 18.2107 20.5304 18 20 18H18V28H12Z" fill="white"/>
+          </svg>
+        </div>
+        <span class="logo-text">PRO<span class="text-orange">X</span>EO</span>
+      </a>
+
+      <nav class="nav-links" id="nav-links">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#guide" class="nav-link">Guide</a>
+        <a href="#about" class="nav-link">À propos</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+
+      <a href="#contact" class="btn btn-orange nav-cta">Demander un devis</a>
+
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile nav overlay -->
+  <div class="mobile-nav-overlay" id="mobile-nav-overlay">
+    <nav class="mobile-nav-links">
+      <a href="#services" class="mobile-nav-link">Services</a>
+      <a href="#guide" class="mobile-nav-link">Guide</a>
+      <a href="#about" class="mobile-nav-link">À propos</a>
+      <a href="#contact" class="mobile-nav-link">Contact</a>
+      <a href="#contact" class="btn btn-orange mobile-nav-cta">Demander un devis</a>
+    </nav>
+  </div>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="hero">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <div class="badge">Spécialiste facturation électronique 2026</div>
+        <h1 class="hero-title">La compta simplifiée, <span class="text-orange">enfin.</span></h1>
+        <p class="hero-subtitle">Proxeo accompagne les micro-entreprises, TPE et PME dans leur gestion comptable — saisie, conseils, facturation électronique. Simple, humain, efficace.</p>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn btn-black">Prendre contact <span class="arrow">&rarr;</span></a>
+          <a href="#guide" class="btn btn-text">Découvrir le guide <span class="arrow">&rarr;</span></a>
+        </div>
       </div>
-      <ul class="nav-list">
-        <li>
-          <button class="nav-item active" data-section="notes">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <div class="hero-stats fade-in">
+        <div class="stat">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Conformité garantie</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">2026</span>
+          <span class="stat-label">Réforme anticipée</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Profils d'entreprises accompagnés</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="section-label fade-in">CE QUE JE FAIS</div>
+      <h2 class="section-title text-white fade-in">Des services concrets.</h2>
+      <div class="services-grid fade-in">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14 2 14 8 20 8"/>
               <line x1="16" y1="13" x2="8" y2="13"/>
               <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
             </svg>
-            Notes / Documents
-          </button>
-        </li>
-        <li>
-          <button class="nav-item" data-section="tasks">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 11l3 3L22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </div>
+          <h3 class="service-title">Saisie comptable</h3>
+          <p class="service-desc">Je prends en charge votre saisie comptable régulière — factures, charges, recettes — pour que vos comptes soient toujours à jour.</p>
+          <span class="service-tag">RÉCURRENT <span class="arrow">&rarr;</span></span>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
+              <line x1="12" y1="17" x2="12.01" y2="17"/>
             </svg>
-            Tâches / Projets
-          </button>
-        </li>
-      </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <main class="main-content">
-
-      <!-- ===== NOTES SECTION ===== -->
-      <section id="notes-section" class="section">
-        <div class="section-header">
-          <h2>Notes / Documents</h2>
-          <button class="btn-primary" id="btn-add-note">+ Nouvelle note</button>
+          </div>
+          <h3 class="service-title">Conseil & accompagnement</h3>
+          <p class="service-desc">Choix du régime fiscal, structuration de votre compta, mise en place de tableaux de bord — je vous guide pas à pas.</p>
+          <span class="service-tag">SUR MESURE <span class="arrow">&rarr;</span></span>
         </div>
-
-        <!-- Filters -->
-        <div class="filters-bar">
-          <input type="text" class="search-input" id="notes-search" placeholder="Rechercher une note...">
-          <select id="notes-filter-category" class="filter-select">
-            <option value="">Toutes les catégories</option>
-          </select>
-          <input type="date" id="notes-filter-date" class="filter-date" title="Filtrer par date">
+        <div class="service-card">
+          <div class="service-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <h3 class="service-title">Facturation électronique</h3>
+          <p class="service-desc">Préparez-vous à la réforme 2026–2027. Choix de votre PDP, mise en conformité, accompagnement complet.</p>
+          <span class="service-tag">RÉFORME 2026 <span class="arrow">&rarr;</span></span>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Notes List -->
-        <div class="list-container" id="notes-list">
-          <div class="empty-state">Aucune note pour le moment. Créez-en une !</div>
-        </div>
-
-        <!-- Note Modal -->
-        <div class="modal-overlay" id="note-modal">
-          <div class="modal">
-            <div class="modal-header">
-              <h3 id="note-modal-title">Nouvelle note</h3>
-              <button class="btn-close" id="btn-close-note">&times;</button>
-            </div>
-            <form id="note-form">
-              <input type="hidden" id="note-id">
-              <div class="form-group">
-                <label for="note-title">Titre</label>
-                <input type="text" id="note-title" required placeholder="Titre de la note">
-              </div>
-              <div class="form-group">
-                <label for="note-category">Catégorie</label>
-                <input type="text" id="note-category" placeholder="Général" value="Général">
-              </div>
-              <div class="form-group">
-                <label for="note-content">Contenu</label>
-                <textarea id="note-content" rows="10" placeholder="Écrivez votre note ici..."></textarea>
-              </div>
-              <div class="modal-actions">
-                <button type="button" class="btn-secondary" id="btn-cancel-note">Annuler</button>
-                <button type="submit" class="btn-primary">Enregistrer</button>
-              </div>
-            </form>
+  <!-- ========== GUIDE ========== -->
+  <section class="guide" id="guide">
+    <div class="container">
+      <div class="guide-grid">
+        <div class="guide-card fade-in">
+          <div class="guide-card-label">GUIDE COMPLET</div>
+          <h3 class="guide-card-title">Facturation électronique : le guide complet</h3>
+          <div class="guide-chapters">
+            <div class="guide-chapter"><span class="chapter-dash">—</span> Comprendre la réforme</div>
+            <div class="guide-chapter"><span class="chapter-dash">—</span> Choisir son PDP</div>
+            <div class="guide-chapter"><span class="chapter-dash">—</span> Migrer ses process</div>
+            <div class="guide-chapter"><span class="chapter-dash">—</span> Checklist de conformité</div>
+          </div>
+          <div class="guide-price-block">
+            <span class="guide-price">29€</span>
+            <span class="guide-price-sub">accès immédiat · PDF</span>
           </div>
         </div>
-      </section>
-
-      <!-- ===== TASKS SECTION ===== -->
-      <section id="tasks-section" class="section hidden">
-        <div class="section-header">
-          <h2>Tâches / Projets</h2>
-          <button class="btn-primary" id="btn-add-task">+ Nouvelle tâche</button>
+        <div class="guide-content fade-in">
+          <div class="section-label">PRODUIT DIGITAL</div>
+          <h2 class="section-title">Soyez prêt <span class="text-orange">avant</span> tout le monde.</h2>
+          <p class="guide-text">La facturation électronique devient obligatoire dès 2026. Ce guide vous donne toutes les clés pour anticiper la réforme : comprendre les obligations, choisir votre plateforme, migrer vos process et valider votre conformité.</p>
+          <ul class="guide-benefits">
+            <li><span class="check">&#10003;</span> Calendrier officiel de la réforme</li>
+            <li><span class="check">&#10003;</span> Comparatif des plateformes PDP</li>
+            <li><span class="check">&#10003;</span> Checklist de mise en conformité</li>
+            <li><span class="check">&#10003;</span> Modèles et templates prêts à l'emploi</li>
+          </ul>
+          <a href="#" class="btn btn-orange" id="btn-guide">Obtenir le guide — 29€</a>
         </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Filters -->
-        <div class="filters-bar">
-          <input type="text" class="search-input" id="tasks-search" placeholder="Rechercher une tâche...">
-          <select id="tasks-filter-category" class="filter-select">
-            <option value="">Toutes les catégories</option>
-          </select>
-          <select id="tasks-filter-status" class="filter-select">
-            <option value="">Tous les statuts</option>
-            <option value="À faire">À faire</option>
-            <option value="En cours">En cours</option>
-            <option value="Terminé">Terminé</option>
-          </select>
-          <input type="date" id="tasks-filter-date" class="filter-date" title="Filtrer par échéance">
+  <!-- ========== ABOUT ========== -->
+  <section class="about" id="about">
+    <div class="container">
+      <div class="section-label fade-in">POURQUOI PROXEO</div>
+      <h2 class="section-title fade-in">Un expert comptable à votre côté, pas une grande structure froide.</h2>
+      <p class="about-text fade-in">Je suis Maxence, consultant comptable indépendant basé en Vendée. Formé en cabinet comptable et titulaire du BUT GEA, j'accompagne les entrepreneurs avec des conseils concrets, rapides et adaptés à leur réalité.</p>
+      <div class="reassurance-grid fade-in">
+        <div class="reassurance-card">
+          <div class="reassurance-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 class="reassurance-title">Réactivité</h3>
+          <p class="reassurance-desc">Réponse sous 24h, toujours.</p>
         </div>
-
-        <!-- Tasks List -->
-        <div class="list-container" id="tasks-list">
-          <div class="empty-state">Aucune tâche pour le moment. Créez-en une !</div>
+        <div class="reassurance-card">
+          <div class="reassurance-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <h3 class="reassurance-title">Transparence</h3>
+          <p class="reassurance-desc">Tarifs clairs, sans surprise.</p>
         </div>
+        <div class="reassurance-card">
+          <div class="reassurance-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#FF5500" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 class="reassurance-title">Expertise</h3>
+          <p class="reassurance-desc">Formé en cabinet, au contact du terrain.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Task Modal -->
-        <div class="modal-overlay" id="task-modal">
-          <div class="modal">
-            <div class="modal-header">
-              <h3 id="task-modal-title">Nouvelle tâche</h3>
-              <button class="btn-close" id="btn-close-task">&times;</button>
-            </div>
-            <form id="task-form">
-              <input type="hidden" id="task-id">
-              <div class="form-group">
-                <label for="task-title">Titre</label>
-                <input type="text" id="task-title" required placeholder="Titre de la tâche">
-              </div>
-              <div class="form-group">
-                <label for="task-category">Catégorie</label>
-                <input type="text" id="task-category" placeholder="Général" value="Général">
-              </div>
-              <div class="form-group">
-                <label for="task-status">Statut</label>
-                <select id="task-status">
-                  <option value="À faire">À faire</option>
-                  <option value="En cours">En cours</option>
-                  <option value="Terminé">Terminé</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="task-due-date">Date d'échéance</label>
-                <input type="date" id="task-due-date">
-              </div>
-              <div class="form-group">
-                <label for="task-description">Description</label>
-                <textarea id="task-description" rows="6" placeholder="Décrivez la tâche..."></textarea>
-              </div>
-              <div class="modal-actions">
-                <button type="button" class="btn-secondary" id="btn-cancel-task">Annuler</button>
-                <button type="submit" class="btn-primary">Enregistrer</button>
-              </div>
-            </form>
+  <!-- ========== FAQ ========== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="section-label fade-in">FAQ</div>
+      <h2 class="section-title fade-in">Vos questions, nos réponses.</h2>
+      <div class="faq-list fade-in">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Êtes-vous un expert-comptable diplômé ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Je suis consultant comptable indépendant, titulaire d'un BUT GEA spécialisation Gestion Comptable et Financière. Je n'établis pas de bilans certifiés mais j'accompagne les entreprises dans leur gestion comptable quotidienne.</p>
           </div>
         </div>
-      </section>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Quelles sont vos zones géographiques ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>J'interviens principalement en Vendée et Loire-Atlantique, mais je travaille aussi à distance pour les clients partout en France.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Comment se passe une première prise de contact ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Remplissez le formulaire de contact. Je vous réponds sous 24h avec une proposition adaptée à votre situation.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>À partir de quand la facturation électronique est-elle obligatoire ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>La réforme s'applique progressivement : grandes entreprises en 2026, puis ETI, PME et micro-entreprises d'ici 2027. Mon guide détaille le calendrier complet.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Le guide est-il remboursable ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Le guide étant un produit digital à accès immédiat, il n'est pas remboursable. En cas de problème technique, contactez-moi directement.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    </main>
-  </div>
+  <!-- ========== CONTACT ========== -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-wrapper fade-in">
+        <div class="section-label">CONTACT</div>
+        <h2 class="section-title">On en <span class="text-orange">parle</span> ?</h2>
+        <p class="contact-subtitle">Décrivez votre situation et je vous réponds sous 24h avec une proposition adaptée.</p>
+        <form class="contact-form" id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstname">Prénom</label>
+              <input type="text" id="firstname" name="firstname" required placeholder="Votre prénom">
+              <span class="form-error" id="error-firstname"></span>
+            </div>
+            <div class="form-group">
+              <label for="lastname">Nom</label>
+              <input type="text" id="lastname" name="lastname" required placeholder="Votre nom">
+              <span class="form-error" id="error-lastname"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="votre@email.com">
+            <span class="form-error" id="error-email"></span>
+          </div>
+          <div class="form-group">
+            <label for="company-type">Vous êtes</label>
+            <select id="company-type" name="company_type" required>
+              <option value="" disabled selected>Sélectionnez votre profil</option>
+              <option value="Micro-entrepreneur">Micro-entrepreneur</option>
+              <option value="TPE 1-10 salariés">TPE 1–10 salariés</option>
+              <option value="PME 10-50 salariés">PME 10–50 salariés</option>
+            </select>
+            <span class="form-error" id="error-company-type"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Votre besoin</label>
+            <textarea id="message" name="message" rows="5" required placeholder="Décrivez votre besoin..."></textarea>
+            <span class="form-error" id="error-message"></span>
+          </div>
+          <button type="submit" class="btn btn-black btn-submit" id="btn-submit">Envoyer ma demande <span class="arrow">&rarr;</span></button>
+        </form>
+        <div class="form-success" id="form-success" style="display:none;">
+          <div class="success-icon">&#10003;</div>
+          <h3>Message envoyé !</h3>
+          <p>Merci pour votre message. Je vous réponds sous 24h.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- Toast notifications -->
-  <div id="toast-container"></div>
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">
+        <span class="logo-text logo-text-white">PRO<span class="text-orange">X</span>EO</span>
+      </div>
+      <div class="footer-center">
+        &copy; 2026 Proxeo &middot; Tous droits réservés
+      </div>
+      <div class="footer-right">
+        <span class="footer-location">Vendée, France</span>
+        <a href="#" class="footer-link">Mentions légales</a>
+        <a href="#" class="footer-link">Politique de confidentialité</a>
+      </div>
+    </div>
+  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="app.js"></script>
