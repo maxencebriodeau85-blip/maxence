@@ -1,10 +1,20 @@
 // ============================================================
+// Enable JS-dependent animations
+// ============================================================
+document.documentElement.classList.add('js-loaded');
+
+// ============================================================
 // Supabase Configuration
 // ============================================================
 const SUPABASE_URL = 'https://lqmtugoubczposyktxtz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxbXR1Z291YmN6cG9zeWt0eXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNTU5NzMsImV4cCI6MjA5MDgzMTk3M30.lqz2bh6YAaErxiv6gS_zurAaqqNZqq0GNHmVdJkwr5w';
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let supabaseClient = null;
+try {
+  supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+} catch (e) {
+  console.warn('Supabase not available:', e);
+}
 
 // ============================================================
 // Smooth scroll navigation
@@ -168,7 +178,8 @@ contactForm.addEventListener('submit', async (e) => {
   btnSubmit.textContent = 'Envoi en cours...';
 
   try {
-    const { error } = await supabase.from('contacts').insert({
+    if (!supabaseClient) throw new Error('Supabase non disponible');
+    const { error } = await supabaseClient.from('contacts').insert({
       firstname,
       lastname,
       email,
