@@ -1,45 +1,50 @@
-# Mon Espace — Notes & Tâches
+# PROXEO — Landing Page
 
-Application web personnelle de gestion de notes et de tâches, avec un design minimaliste inspiré de Notion.
+Site vitrine pour Proxeo, cabinet de conseil en comptabilité B2B basé en Vendée. Single-page responsive avec formulaire de contact connecté à Supabase.
 
-## Fonctionnalités
+## Sections
 
-- **Notes / Documents** : créer, modifier, supprimer des notes avec titre, catégorie et contenu libre
-- **Tâches / Projets** : gérer des tâches avec statut (À faire / En cours / Terminé), catégorie et date d'échéance
-- **Recherche et filtres** : barre de recherche, filtres par catégorie, date et statut
-- **Responsive** : utilisable sur mobile et desktop
-- **Persistance** : données stockées dans Supabase
+- **Navigation** sticky avec menu hamburger mobile
+- **Hero** avec badge, titre, CTAs et statistiques
+- **Services** (Saisie comptable, Conseil, Facturation électronique)
+- **Guide** produit digital facturation électronique (29€)
+- **À propos** avec blocs de réassurance
+- **FAQ** avec accordéon animé
+- **Contact** avec formulaire validé et stockage Supabase
+- **Footer**
+
+## Stack technique
+
+- HTML / CSS / JavaScript vanilla
+- Google Fonts : Syne (800) + DM Sans (300/400/500)
+- Supabase pour le stockage des contacts
+- Stripe (placeholder prêt à configurer)
+- GitHub Pages pour le déploiement
 
 ## Installation
 
-### 1. Créer un projet Supabase
+### 1. Supabase
 
-1. Créer un compte sur [supabase.com](https://supabase.com)
-2. Créer un nouveau projet
-3. Aller dans **SQL Editor** et exécuter le contenu du fichier `supabase-schema.sql`
+1. Créer un projet sur [supabase.com](https://supabase.com)
+2. Exécuter `supabase-schema.sql` dans l'éditeur SQL
+3. Mettre à jour `SUPABASE_URL` et `SUPABASE_ANON_KEY` dans `app.js`
 
-### 2. Configurer l'application
+### 2. Stripe (optionnel)
 
-Dans `app.js`, remplacer les deux constantes par vos valeurs (disponibles dans **Settings > API** du dashboard Supabase) :
+Remplacer le placeholder dans `app.js` (événement `btn-guide`) par votre URL Stripe Checkout.
 
-```javascript
-const SUPABASE_URL = 'https://VOTRE_PROJET.supabase.co';
-const SUPABASE_ANON_KEY = 'VOTRE_CLE_ANON';
-```
-
-### 3. Lancer l'application
-
-Ouvrir `index.html` dans un navigateur, ou servir avec un serveur local :
+### 3. Lancer
 
 ```bash
 npx serve .
 ```
 
-## Structure du projet
+## Structure
 
 ```
-index.html           — Page principale
-style.css            — Styles (design Notion-like)
-app.js               — Logique applicative et intégration Supabase
-supabase-schema.sql  — Schéma de base de données à exécuter dans Supabase
+index.html           — Page unique
+style.css            — Styles custom (brand Proxeo)
+app.js               — Navigation, FAQ, formulaire, Supabase
+supabase-schema.sql  — Table contacts
+.github/workflows/   — Déploiement GitHub Pages
 ```
