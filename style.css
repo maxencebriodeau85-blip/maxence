@@ -781,6 +781,46 @@ img {
   font-size: 1.125rem;
 }
 
+.guide-not-for {
+  background: rgba(255, 85, 0, 0.05);
+  border-left: 3px solid var(--orange);
+  border-radius: 0 8px 8px 0;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+}
+
+.guide-not-for-title {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 0.875rem;
+  color: var(--black);
+  margin-bottom: 10px;
+}
+
+.guide-not-for-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  list-style: none;
+}
+
+.guide-not-for-list li {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.8125rem;
+  color: #777777;
+  padding-left: 16px;
+  position: relative;
+}
+
+.guide-not-for-list li::before {
+  content: '✕';
+  position: absolute;
+  left: 0;
+  color: #CC4400;
+  font-size: 0.75rem;
+}
+
 .guide-payment-info {
   font-family: var(--font-body);
   font-weight: 300;
