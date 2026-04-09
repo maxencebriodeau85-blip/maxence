@@ -1,10 +1,19 @@
 // ============================================================
-// Supabase Configuration
+// Enable JS-dependent animations
 // ============================================================
-const SUPABASE_URL = 'https://lqmtugoubczposyktxtz.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImxxbXR1Z291YmN6cG9zeWt0eXR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzUyNTU5NzMsImV4cCI6MjA5MDgzMTk3M30.lqz2bh6YAaErxiv6gS_zurAaqqNZqq0GNHmVdJkwr5w';
+document.documentElement.classList.add('js-loaded');
 
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// ============================================================
+// Urgency banner close
+// ============================================================
+const urgencyBanner = document.getElementById('urgency-banner');
+const urgencyClose = document.getElementById('urgency-close');
+
+if (urgencyBanner && urgencyClose) {
+  urgencyClose.addEventListener('click', () => {
+    urgencyBanner.classList.add('hidden');
+  });
+}
 
 // ============================================================
 // Smooth scroll navigation
@@ -167,16 +176,18 @@ contactForm.addEventListener('submit', async (e) => {
   btnSubmit.disabled = true;
   btnSubmit.textContent = 'Envoi en cours...';
 
+  const formSubmitError = document.getElementById('form-submit-error');
+  formSubmitError.style.display = 'none';
+
   try {
-    const { error } = await supabase.from('contacts').insert({
-      firstname,
-      lastname,
-      email,
-      company_type: companyType,
-      message
+    const formData = new FormData(contactForm);
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
     });
 
-    if (error) throw error;
+    if (!response.ok) throw new Error('Formspree error');
 
     // Show success
     contactForm.style.display = 'none';
@@ -185,7 +196,7 @@ contactForm.addEventListener('submit', async (e) => {
     console.error('Form submission error:', err);
     btnSubmit.disabled = false;
     btnSubmit.innerHTML = 'Envoyer ma demande <span class="arrow">&rarr;</span>';
-    alert('Une erreur est survenue. Veuillez réessayer.');
+    formSubmitError.style.display = 'block';
   }
 });
 
@@ -196,11 +207,5 @@ contactForm.addEventListener('submit', async (e) => {
 document.getElementById('company-type').addEventListener('change', () => clearFieldError('company-type'));
 
 // ============================================================
-// Guide CTA — Stripe placeholder
+// Guide CTA — Gumroad (direct link, no JS needed)
 // ============================================================
-document.getElementById('btn-guide').addEventListener('click', (e) => {
-  e.preventDefault();
-  // TODO: Replace with Stripe Checkout redirect
-  // Example: window.location.href = 'https://checkout.stripe.com/pay/xxx';
-  alert('Redirection vers le paiement Stripe (à configurer).');
-});
