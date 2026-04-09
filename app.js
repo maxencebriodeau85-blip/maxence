@@ -4,6 +4,18 @@
 document.documentElement.classList.add('js-loaded');
 
 // ============================================================
+// Countdown to 2026 reform (September 1, 2026)
+// ============================================================
+const countdownEl = document.getElementById('countdown-days');
+if (countdownEl) {
+  const reformDate = new Date('2026-09-01T00:00:00');
+  const now = new Date();
+  const diffMs = reformDate - now;
+  const diffDays = Math.max(0, Math.ceil(diffMs / (1000 * 60 * 60 * 24)));
+  countdownEl.textContent = diffDays;
+}
+
+// ============================================================
 // Urgency banner close
 // ============================================================
 const urgencyBanner = document.getElementById('urgency-banner');
@@ -111,6 +123,7 @@ document.querySelectorAll('.faq-question').forEach(button => {
 const contactForm = document.getElementById('contact-form');
 const formSuccess = document.getElementById('form-success');
 const btnSubmit = document.getElementById('btn-submit');
+let lastSubmitTime = 0;
 
 function validateEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -137,6 +150,19 @@ function clearAllErrors() {
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   clearAllErrors();
+
+  // Security: honeypot check
+  const honeypot = document.getElementById('website');
+  if (honeypot && honeypot.value) return;
+
+  // Security: rate limiting (30s between submissions)
+  const now = Date.now();
+  if (now - lastSubmitTime < 30000) {
+    const formSubmitError = document.getElementById('form-submit-error');
+    formSubmitError.textContent = 'Veuillez patienter avant de renvoyer le formulaire.';
+    formSubmitError.style.display = 'block';
+    return;
+  }
 
   const firstname = document.getElementById('firstname').value.trim();
   const lastname = document.getElementById('lastname').value.trim();
@@ -175,12 +201,16 @@ contactForm.addEventListener('submit', async (e) => {
   // Disable button
   btnSubmit.disabled = true;
   btnSubmit.textContent = 'Envoi en cours...';
+  lastSubmitTime = now;
 
   const formSubmitError = document.getElementById('form-submit-error');
   formSubmitError.style.display = 'none';
 
   try {
     const formData = new FormData(contactForm);
+    // Remove honeypot from submitted data
+    formData.delete('website');
+
     const response = await fetch(contactForm.action, {
       method: 'POST',
       body: formData,
@@ -205,7 +235,3 @@ contactForm.addEventListener('submit', async (e) => {
   document.getElementById(id).addEventListener('input', () => clearFieldError(id));
 });
 document.getElementById('company-type').addEventListener('change', () => clearFieldError('company-type'));
-
-// ============================================================
-// Guide CTA — Gumroad (direct link, no JS needed)
-// ============================================================
