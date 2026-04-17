@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Boring Money — the directory of unsexy, unglamorous, deeply profitable businesses you can start with sweat and a pickup truck.">
+<title>BORING MONEY — Unsexy Businesses That Print Cash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Special+Elite&family=IBM+Plex+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BORING MONEY — brutalist newspaper aesthetic
+   Free = black ink on newsprint cream.
+   Pro  = gold-leaf premium treatment (stacked, not replacing).
+   ============================================================ */
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;
+  background:#f5f2ea;
+  color:#111;
+  line-height:1.5;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.018) 0 1px, transparent 1px 3px);
+}
+a{color:inherit;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:2px}
+a:hover{background:#111;color:#f5f2ea}
+button{font-family:inherit;cursor:pointer;background:none;border:none;color:inherit}
+h1,h2,h3,h4{font-family:'Playfair Display',Georgia,serif;font-weight:900;letter-spacing:-0.01em;line-height:1.05}
+.meta{font-family:'Special Elite',monospace;letter-spacing:0.04em;text-transform:uppercase;font-size:.78rem}
+
+/* ---------- Pro banner (sticky, subtle) ---------- */
+.pro-banner{
+  position:sticky;top:0;z-index:50;
+  background:#111;color:#f5f2ea;
+  border-bottom:3px solid #c9a227;
+  font-family:'Special Elite',monospace;
+  font-size:.82rem;letter-spacing:.05em;
+  padding:.55rem 1rem;
+  display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;
+}
+.pro-banner .gold{color:#c9a227;font-weight:700}
+.pro-banner button.cta{
+  background:#c9a227;color:#111;padding:.2rem .7rem;border:2px solid #f5f2ea;
+  font-weight:700;text-transform:uppercase;font-size:.75rem;
+}
+.pro-banner button.cta:hover{background:#f5f2ea;color:#111;border-color:#c9a227}
+.pro-banner .dismiss{opacity:.6;font-size:1rem;padding:0 .3rem}
+.pro-banner .dismiss:hover{opacity:1;background:none;color:#c9a227}
+body.is-pro .pro-banner{background:#c9a227;color:#111;border-bottom-color:#111}
+body.is-pro .pro-banner .gold{color:#111}
+body.is-pro .pro-banner button.cta{display:none}
+
+/* ---------- Masthead (newspaper-style header) ---------- */
+.masthead{
+  max-width:1200px;margin:0 auto;padding:2rem 1.25rem 1rem;
+  border-bottom:4px solid #111;text-align:center;
+}
+.masthead .dateline{
+  display:flex;justify-content:space-between;align-items:center;
+  border-top:1px solid #111;border-bottom:1px solid #111;
+  padding:.3rem 0;margin-bottom:1rem;
+  font-family:'Special Elite',monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.masthead h1{
+  font-size:clamp(2.4rem,8vw,5.5rem);
+  line-height:.95;
+  text-transform:uppercase;
+}
+.masthead h1 .amp{font-style:italic;font-weight:700;color:#c62828}
+.masthead .tagline{
+  font-family:'Special Elite',monospace;
+  margin-top:.6rem;font-size:1rem;letter-spacing:.05em;
+}
+.masthead .kicker{
+  display:inline-block;border:2px solid #111;padding:.2rem .6rem;margin-bottom:.8rem;
+  font-family:'Special Elite',monospace;text-transform:uppercase;font-size:.72rem;letter-spacing:.1em;
+}
+
+/* ---------- Toolbar (filters + shuffle + pro unlock) ---------- */
+.toolbar{
+  max-width:1200px;margin:0 auto;padding:1rem 1.25rem;
+  border-bottom:3px solid #111;
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:1rem;align-items:end;
+}
+.filters{display:flex;flex-wrap:wrap;gap:.6rem}
+.filters label{
+  display:flex;flex-direction:column;gap:.15rem;
+  font-family:'Special Elite',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.filters select,.filters input[type=search]{
+  font-family:'IBM Plex Mono',monospace;font-size:.85rem;
+  background:#f5f2ea;border:2px solid #111;padding:.45rem .6rem;min-width:140px;
+  border-radius:0;
+}
+.filters input[type=search]{min-width:200px}
+.filters select:focus,.filters input[type=search]:focus{outline:3px solid #c62828;outline-offset:-2px}
+.actions{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:flex-end;align-items:flex-end}
+.btn{
+  font-family:'Special Elite',monospace;
+  text-transform:uppercase;letter-spacing:.08em;
+  padding:.6rem 1rem;border:3px solid #111;background:#f5f2ea;color:#111;
+  font-size:.8rem;font-weight:700;
+  box-shadow:4px 4px 0 #111;
+  transition:transform .08s ease, box-shadow .08s ease;
+}
+.btn:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #111}
+.btn:active{transform:translate(4px,4px);box-shadow:0 0 0 #111}
+.btn-primary{background:#111;color:#f5f2ea}
+.btn-gold{background:#c9a227;color:#111;border-color:#111;box-shadow:4px 4px 0 #111}
+.btn-gold:hover{background:#b9901c}
+.btn-danger{background:#c62828;color:#f5f2ea}
+
+/* ---------- Grid of cards ---------- */
+.grid{
+  max-width:1200px;margin:0 auto;padding:1.25rem;
+  display:grid;gap:1rem;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+}
+.grid-heading{
+  grid-column:1/-1;
+  display:flex;align-items:baseline;justify-content:space-between;gap:1rem;
+  border-top:6px double #111;border-bottom:2px solid #111;
+  padding:.6rem 0;margin-top:1rem;
+}
+.grid-heading h2{font-size:1.6rem;text-transform:uppercase}
+.grid-heading .meta{opacity:.75}
+
+/* ---------- Business card ---------- */
+.card{
+  background:#fff;border:3px solid #111;
+  padding:1rem;position:relative;
+  display:flex;flex-direction:column;gap:.6rem;
+  box-shadow:5px 5px 0 #111;
+  transition:transform .1s ease, box-shadow .1s ease;
+  cursor:pointer;
+  min-height:260px;
+}
+.card:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #111}
+.card .industry-tag{
+  position:absolute;top:-1px;left:-1px;
+  background:#111;color:#f5f2ea;
+  font-family:'Special Elite',monospace;font-size:.65rem;
+  padding:.15rem .45rem;letter-spacing:.08em;text-transform:uppercase;
+}
+.card h3{font-size:1.45rem;line-height:1.05;padding-top:1rem;text-transform:uppercase}
+.card .desc{font-size:.85rem;opacity:.85;flex:1}
+.card .stats{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:.3rem .8rem;
+  font-size:.72rem;font-family:'Special Elite',monospace;
+  border-top:1px dashed #111;padding-top:.5rem;
+}
+.card .stats b{font-family:'IBM Plex Mono',monospace;font-weight:700;display:block;font-size:.9rem}
+.card .tags{display:flex;flex-wrap:wrap;gap:.3rem}
+.card .tag{
+  font-family:'Special Elite',monospace;font-size:.65rem;
+  border:1.5px solid #111;padding:.08rem .35rem;text-transform:uppercase;letter-spacing:.04em;
+}
+.card .score-stamp{
+  position:absolute;top:.6rem;right:.6rem;
+  width:54px;height:54px;border-radius:50%;
+  border:2.5px solid #111;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  font-family:'Special Elite',monospace;
+  transform:rotate(8deg);
+  background:#f5f2ea;
+}
+.card .score-stamp .n{font-size:1.2rem;font-weight:700;line-height:1}
+.card .score-stamp .l{font-size:.55rem;letter-spacing:.06em}
+
+/* Pro-only cards: gold treatment + lock */
+.card.pro{
+  background:#fff8e1;border-color:#8a6a00;
+  box-shadow:5px 5px 0 #c9a227;
+}
+.card.pro:hover{box-shadow:7px 7px 0 #c9a227}
+.card.pro .industry-tag{background:#c9a227;color:#111}
+.card.pro .score-stamp{border-color:#8a6a00;background:#c9a227;color:#111}
+.card.pro .pro-badge{
+  position:absolute;top:.5rem;right:4rem;
+  background:#c9a227;color:#111;
+  font-family:'Special Elite',monospace;font-size:.65rem;
+  padding:.1rem .4rem;border:2px solid #111;
+  transform:rotate(-6deg);letter-spacing:.1em;font-weight:700;
+}
+.card.locked{position:relative;overflow:hidden}
+.card.locked .lock-overlay{
+  position:absolute;inset:0;
+  background:rgba(255,248,225,0.82);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.7rem;
+  text-align:center;padding:1rem;
+}
+.card.locked .lock-overlay .lock-icon{font-size:2rem}
+.card.locked .lock-overlay h4{font-family:'Playfair Display',serif;font-size:1.1rem;text-transform:uppercase}
+.card.locked .lock-overlay p{font-size:.78rem;opacity:.85}
+body.is-pro .card.locked .lock-overlay{display:none}
+
+/* ---------- Modal ---------- */
+.modal-backdrop{
+  position:fixed;inset:0;background:rgba(17,17,17,.75);
+  display:none;align-items:flex-start;justify-content:center;
+  padding:2rem 1rem;z-index:100;overflow-y:auto;
+}
+.modal-backdrop.open{display:flex}
+.modal{
+  background:#f5f2ea;border:4px solid #111;
+  max-width:820px;width:100%;
+  box-shadow:12px 12px 0 #111;
+  position:relative;
+}
+.modal-head{
+  background:#111;color:#f5f2ea;
+  padding:1rem 1.25rem;
+  display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;
+  border-bottom:4px solid #c62828;
+}
+.modal-head h2{font-size:clamp(1.5rem,3.5vw,2.3rem);text-transform:uppercase;line-height:1}
+.modal-head .sub{font-family:'Special Elite',monospace;font-size:.78rem;letter-spacing:.08em;opacity:.8;margin-top:.3rem}
+.modal-close{
+  background:#c62828;color:#f5f2ea;font-size:1.3rem;
+  width:2rem;height:2rem;line-height:1;
+  border:2px solid #f5f2ea;flex-shrink:0;
+}
+.modal-close:hover{background:#f5f2ea;color:#c62828;border-color:#c62828}
+.modal-body{padding:1.25rem}
+.modal-body section{border-top:2px solid #111;padding:1rem 0;margin-top:1rem}
+.modal-body section:first-child{border-top:none;margin-top:0;padding-top:0}
+.modal-body h3{
+  font-size:1.25rem;margin-bottom:.6rem;text-transform:uppercase;
+  display:flex;align-items:center;gap:.6rem;
+}
+.modal-body h3::before{content:"§";color:#c62828}
+.modal-body .stat-row{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.6rem;
+}
+.modal-body .stat-box{
+  background:#fff;border:2.5px solid #111;padding:.6rem;
+}
+.modal-body .stat-box .l{font-family:'Special Elite',monospace;font-size:.65rem;letter-spacing:.08em;text-transform:uppercase;opacity:.8}
+.modal-body .stat-box .v{font-family:'Playfair Display',serif;font-weight:900;font-size:1.2rem;line-height:1.1}
+.modal-body ol{padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem}
+.modal-body ol li{font-size:.88rem}
+.modal-body .aff-list{display:flex;flex-direction:column;gap:.55rem;margin-top:.4rem}
+.modal-body .aff-item{
+  border:2px solid #111;background:#fff;padding:.6rem .8rem;
+  display:flex;justify-content:space-between;align-items:center;gap:.8rem;
+  font-size:.85rem;
+}
+.modal-body .aff-item .aff-disclosure{font-family:'Special Elite',monospace;font-size:.62rem;opacity:.7}
+.modal-body .aff-cta{
+  background:#111;color:#f5f2ea;padding:.3rem .7rem;
+  text-decoration:none;font-family:'Special Elite',monospace;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;
+  border:2px solid #111;flex-shrink:0;
+}
+.modal-body .aff-cta:hover{background:#c9a227;color:#111}
+
+/* Pro sections inside modal */
+.pro-section{
+  background:#fff8e1;border:3px solid #c9a227;
+  padding:1rem;margin-top:1rem;position:relative;
+}
+.pro-section::before{
+  content:"PRO";position:absolute;top:-12px;left:1rem;
+  background:#c9a227;color:#111;font-family:'Special Elite',monospace;
+  padding:.1rem .5rem;border:2px solid #111;font-weight:700;letter-spacing:.12em;font-size:.7rem;
+}
+.pro-section h3::before{content:"★";color:#c9a227}
+.pro-locked{
+  position:relative;min-height:80px;
+  background:repeating-linear-gradient(45deg,#fff8e1 0 10px,#f3e4a8 10px 20px);
+  border:3px dashed #8a6a00;
+  padding:1.2rem;text-align:center;
+  font-family:'Special Elite',monospace;
+}
+.pro-locked strong{display:block;font-size:1rem;margin-bottom:.3rem}
+body.is-pro .pro-locked{display:none}
+body:not(.is-pro) .pro-content{display:none}
+
+/* ROI calculator */
+.roi-calc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.7rem;margin-top:.6rem}
+.roi-input{display:flex;flex-direction:column;gap:.2rem}
+.roi-input label{font-family:'Special Elite',monospace;font-size:.7rem;letter-spacing:.06em;text-transform:uppercase}
+.roi-input input{
+  font-family:'IBM Plex Mono',monospace;font-size:.95rem;
+  background:#fff;border:2px solid #111;padding:.4rem .5rem;border-radius:0;
+}
+.roi-output{
+  margin-top:.8rem;background:#111;color:#c9a227;padding:.8rem;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;
+}
+.roi-output .o{border-left:3px solid #c9a227;padding-left:.5rem}
+.roi-output .o .l{font-family:'Special Elite',monospace;font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:#f5f2ea;opacity:.7}
+.roi-output .o .v{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#c9a227}
+
+/* Email template */
+.email-tpl{background:#111;color:#f5f2ea;border:3px solid #c9a227;padding:1rem;font-size:.82rem;white-space:pre-wrap}
+.email-tpl .subj{color:#c9a227;font-weight:700;margin-bottom:.5rem}
+
+/* Checklist */
+.checklist{list-style:none;padding:0;display:flex;flex-direction:column;gap:.3rem}
+.checklist li{
+  display:flex;align-items:flex-start;gap:.5rem;
+  padding:.35rem .5rem;border:2px solid #111;background:#fff;font-size:.85rem;
+}
+.checklist li input[type=checkbox]{accent-color:#c9a227;transform:scale(1.2);margin-top:.2rem;flex-shrink:0}
+.checklist li.done{text-decoration:line-through;opacity:.55;background:#fff8e1}
+
+/* ---------- Unlock modal ---------- */
+.unlock-modal .modal{max-width:520px}
+.unlock-modal .price{
+  font-family:'Playfair Display',serif;font-weight:900;font-size:3rem;line-height:1;color:#c9a227;
+  display:flex;align-items:baseline;gap:.4rem;
+}
+.unlock-modal .price small{font-size:1rem;color:#f5f2ea;font-family:'Special Elite',monospace}
+.unlock-modal ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:.4rem;margin:1rem 0}
+.unlock-modal ul li{
+  padding-left:1.8rem;position:relative;font-size:.9rem;
+}
+.unlock-modal ul li::before{
+  content:"★";position:absolute;left:0;top:0;
+  color:#c9a227;font-size:1.2rem;line-height:1;
+}
+
+/* ---------- Footer / disclosure ---------- */
+footer.site-footer{
+  max-width:1200px;margin:2rem auto 0;padding:1.5rem 1.25rem;
+  border-top:4px solid #111;
+  font-family:'Special Elite',monospace;font-size:.78rem;letter-spacing:.04em;
+  display:grid;gap:1rem;
+}
+.disclosure{
+  border:2px dashed #111;padding:.8rem;background:#fff;
+}
+
+/* ---------- Toast ---------- */
+.toast{
+  position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
+  background:#111;color:#c9a227;padding:.7rem 1.2rem;
+  border:3px solid #c9a227;font-family:'Special Elite',monospace;letter-spacing:.08em;
+  z-index:200;font-size:.85rem;
+  animation:toast-in .25s ease;
+}
+@keyframes toast-in{from{transform:translate(-50%,20px);opacity:0}to{transform:translate(-50%,0);opacity:1}}
+
+/* ---------- Empty state ---------- */
+.empty-state{
+  grid-column:1/-1;padding:3rem;text-align:center;
+  border:3px dashed #111;background:#fff;
+  font-family:'Special Elite',monospace;
+}
+
+/* ---------- Responsive ---------- */
+@media(max-width:720px){
+  .toolbar{grid-template-columns:1fr}
+  .actions{justify-content:flex-start}
+  .masthead h1{font-size:clamp(2.2rem,10vw,4rem)}
+  .modal-body{padding:1rem}
+  .card{min-height:auto}
+  .filters select,.filters input[type=search]{min-width:0;width:100%}
+  .filters label{flex:1 1 40%}
+}
+
+@media print{
+  .pro-banner,.toolbar,footer,.modal-close,.btn{display:none!important}
+  .modal-backdrop{position:static;background:none;padding:0}
+  .modal{box-shadow:none;border:2px solid #111;max-width:100%}
+  body{background:#fff}
+}
+</style>
+</head>
+<body>
+
+<!-- ================= STICKY PRO BANNER ================= -->
+<div class="pro-banner" id="proBanner" role="complementary">
+  <span><span class="gold">★</span> Unlock 15 extra businesses, cold email scripts, ROI calculators & checklists.</span>
+  <button class="cta" data-action="open-unlock">Get Pro — $19</button>
+  <button class="dismiss" aria-label="Dismiss" data-action="dismiss-banner">×</button>
+</div>
+
+<!-- ================= MASTHEAD ================= -->
+<header class="masthead">
+  <div class="dateline">
+    <span>Vol. I · No. 1</span>
+    <span id="todayDate">—</span>
+    <span>Established online · Priced in USD</span>
+  </div>
+  <span class="kicker">The Directory of Unsexy Profit</span>
+  <h1>Boring Money <span class="amp">&amp;</span> How to Make It</h1>
+  <p class="tagline">30 deeply unglamorous businesses. Real margins. Zero hype.</p>
+</header>
+
+<!-- ================= TOOLBAR (filters + actions) ================= -->
+<div class="toolbar">
+  <div class="filters" id="filters">
+    <label>Industry
+      <select id="f-industry">
+        <option value="">All industries</option>
+        <option value="cleaning">Cleaning</option>
+        <option value="vending">Vending / Self-service</option>
+        <option value="outdoor">Outdoor / Property</option>
+        <option value="trade">Trade services</option>
+        <option value="logistics">Mobile / Logistics</option>
+        <option value="niche">Niche B2B</option>
+      </select>
+    </label>
+    <label>Budget
+      <select id="f-budget">
+        <option value="">Any budget</option>
+        <option value="low">Under $5k</option>
+        <option value="mid">$5k – $25k</option>
+        <option value="high">$25k +</option>
+      </select>
+    </label>
+    <label>Team size
+      <select id="f-team">
+        <option value="">Any team</option>
+        <option value="solo">Solo</option>
+        <option value="small">2–4 people</option>
+        <option value="larger">5+ people</option>
+      </select>
+    </label>
+    <label>Search
+      <input id="f-search" type="search" placeholder="gutter, lot, vending…">
+    </label>
+  </div>
+  <div class="actions">
+    <button class="btn" data-action="reset">Reset</button>
+    <button class="btn btn-primary" data-action="shuffle">Shuffle →</button>
+    <button class="btn btn-gold" data-action="open-unlock" id="unlockBtn">★ Pro $19</button>
+  </div>
+</div>
+
+<!-- ================= CARDS GRID (populated by JS) ================= -->
+<main class="grid" id="grid" aria-live="polite"></main>
+
+<!-- ================= DETAIL MODAL (populated by JS) ================= -->
+<div class="modal-backdrop" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2 id="modalTitle">—</h2>
+        <div class="sub" id="modalSub">—</div>
+      </div>
+      <button class="modal-close" data-action="close-modal" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- ================= UNLOCK MODAL ================= -->
+<div class="modal-backdrop unlock-modal" id="unlockModal" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="modal-head">
+      <div>
+        <h2>Unlock The Pro Pack</h2>
+        <div class="sub">One-time purchase · Lifetime updates</div>
+      </div>
+      <button class="modal-close" data-action="close-unlock" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body">
+      <div class="price">$19<small>/ one-time</small></div>
+      <ul>
+        <li>15 additional boring businesses (porta-potty rental, ATM routes, concrete leveling…)</li>
+        <li>1 cold email template per industry (6 tested scripts)</li>
+        <li>ROI calculator embedded on the top 5 businesses</li>
+        <li>12-step startup checklist per business</li>
+        <li>Lifetime free updates — new businesses added monthly</li>
+      </ul>
+      <!-- AFFILIATE: gumroad-pro-pack -->
+      <a class="btn btn-gold" href="#" data-aff="gumroad-pro-pack" rel="nofollow" style="display:block;text-align:center;text-decoration:none;padding:.9rem 1rem;font-size:1rem">
+        Buy on Gumroad — $19 →
+      </a>
+      <p class="meta" style="margin-top:.8rem;opacity:.7;text-align:center">
+        Already purchased? <button class="btn" style="padding:.35rem .6rem;box-shadow:none" data-action="simulate-pro">Simulate unlock (dev)</button>
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="disclosure">
+    <strong>Affiliate disclosure (FTC):</strong>
+    Some links on this site are affiliate links, tagged with <code>rel="sponsored"</code>.
+    If you click and purchase, we may earn a small commission at no additional cost to you.
+    We only recommend tools and resources we would use ourselves to start these businesses.
+  </div>
+  <div>
+    © <span id="year">—</span> Boring Money · Built with a pickup-truck mindset · Not financial advice.
+  </div>
+</footer>
+
+
+<script>
+const BUSINESSES = [
+{id:'gutter',name:'Gutter Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Scoop leaves out of gutters twice a year. Homeowners pay you because ladders terrify them.',format:'On-site service',budget:'$500–$2k',budgetTier:'low',team:'Solo',teamTier:'solo',boringScore:92,metrics:{ticket:'$80–$200',margin:'60%',frequency:'2×/yr/home'},tags:['recurring','low-skill','physical'],why:'Half of US homeowners cannot safely climb a 24ft ladder. The job is annoying enough nobody DIYs twice. 6 jobs per day in one neighborhood pays better than most tech salaries.',steps:['Buy a 28ft ladder, gutter scoop, leaf blower, tarps (~$700).','Get $1M general liability insurance (NEXT or Hiscox, ~$45/mo).','Door-hang 500 flyers in neighborhoods with mature trees.','Quote on the spot — single-story $100, two-story $175.','Pre-book Oct/Nov and Mar/Apr — same homes, both seasons.','After 50 jobs, hire a helper at $20/hr to double route capacity.'],margin_detail:'2-hour single-story job at $150 = $75/hr gross. Materials ~$2/job. Insurance + fuel + ads ~20%. Net margin ~60%.',risk:'Falls from ladders. Wear a harness on 2+ stories. Never work alone on steep roofs. Cap at 30ft ladders.',pro:false,affiliates:[{id:'amazon-gutter-scoop',label:'28ft ladder + gutter scoop kit',cta:'Buy on Amazon'},{id:'next-insurance-cleaning',label:'NEXT cleaning business insurance',cta:'Get Quote'},{id:'jobber-crm',label:'Jobber — schedule, quote, invoice',cta:'Try Jobber'}]},
+{id:'pressure',name:'Pressure Washing',industry:'cleaning',industryLabel:'Cleaning',desc:'Blast dirt off driveways, decks, and siding. Visible before/after results sell the next job for you.',format:'On-site service',budget:'$2k–$5k',budgetTier:'low',team:'Solo → 2',teamTier:'solo',boringScore:88,metrics:{ticket:'$250–$600',margin:'65%',frequency:'1×/yr'},tags:['visual-results','upsell','physical'],why:'Homeowners love instant gratification — a dirty driveway becomes spotless in 30 minutes. Your before/after photos are your best ad. HOAs and property managers give recurring contracts.',steps:['Buy a 3000+ PSI gas pressure washer, surface cleaner, hose reel (~$2k).','Get general liability + a business license in your county.','Post before/after photos in local Facebook groups and Nextdoor.','Price by sqft: driveways ~$0.15/sqft, decks ~$0.30/sqft.','Add soft-wash house siding as premium upsell (2× ticket).','After 3 months, buy a second machine and hire a helper.'],margin_detail:'Average driveway: 600sqft × $0.15 = $90 in 25min. House + driveway combo = $350 in 2hrs. Chemical costs ~$15/job. Net ~65%.',risk:'Surface damage from incorrect PSI. Practice on your own property first. Soft-wash for painted surfaces. Carry $1M liability.',pro:false,affiliates:[{id:'amazon-pressure-washer',label:'3000 PSI pressure washer starter kit',cta:'Buy on Amazon'},{id:'amazon-surface-cleaner',label:'20" surface cleaner attachment',cta:'Buy on Amazon'},{id:'housecall-pro',label:'Housecall Pro — booking + payments',cta:'Try Free'}]},
+{id:'window',name:'Window Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Squeegee residential and commercial windows. Low startup, high per-hour rate, and clients tip well.',format:'On-site service',budget:'$300–$1k',budgetTier:'low',team:'Solo',teamTier:'solo',boringScore:85,metrics:{ticket:'$150–$400',margin:'70%',frequency:'2–4×/yr'},tags:['recurring','tips','low-startup'],why:'Commercial buildings need monthly cleaning. Residential clients book quarterly. A $300 kit gets you started and you can charge $8–$15 per pane. Nobody wants to do this themselves.',steps:['Buy a professional squeegee set, bucket, T-bar, extension pole (~$300).','Practice the "S-technique" on your own windows until streak-free.','Offer free demo cleans to 3 neighbors, photograph results.','Price per pane ($8–$12 residential, $3–$5 commercial per pane).','Land 2–3 commercial contracts for stable monthly base revenue.','Add pressure washing as an upsell to existing window clients.'],margin_detail:'20-window residential job at $10/pane = $200 in 1.5hrs. Supplies ~$3. Travel ~$10. Net ~$93/hr.',risk:'Heights. Use WFP (water-fed pole) for 2+ stories instead of ladders. Insure for $1M general liability.',pro:false,affiliates:[{id:'amazon-squeegee-kit',label:'Professional squeegee starter set',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — quotes + scheduling',cta:'Try Jobber'},{id:'skillshare-window',label:'Window cleaning technique course',cta:'Start Free Trial'}]},
+{id:'commercial-cleaning',name:'Commercial Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Clean offices, medical suites, and retail after hours. Contracts are monthly and sticky — clients hate switching.',format:'Contract service',budget:'$2k–$5k',budgetTier:'low',team:'2–5',teamTier:'small',boringScore:87,metrics:{ticket:'$800–$3k/mo',margin:'40–55%',frequency:'Monthly contract'},tags:['recurring','contracts','scalable'],why:'Commercial cleaning contracts are the stickiest revenue in service businesses. Once you are in, switching cost is high. A 10-contract portfolio at $1.5k/mo = $15k MRR with 2–3 employees.',steps:['Get liability insurance + a janitorial bond (~$80/mo combined).','Buy a commercial vacuum, mop system, and chemical kit (~$1.5k).','Walk into 20 offices/medical suites per week and leave a one-page quote.','Price per sqft: offices $0.08–$0.15/sqft/clean, medical $0.15–$0.25.','Hire part-time cleaners at $15–$18/hr as you land contracts.','Systematize with checklists — you manage routes, not mops.'],margin_detail:'A 5,000sqft office 3×/week at $0.10/sqft = $6k/mo. Labor ~$3k. Supplies ~$400. Net ~$2.6k/mo per contract.',risk:'Keyholder liability — get bonded. Employee theft — background check everyone. Quality control — random night inspections.',pro:false,affiliates:[{id:'amazon-janitorial-kit',label:'Commercial cleaning starter kit',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — crew scheduling + invoicing',cta:'Try Jobber'},{id:'next-insurance-janitorial',label:'Janitorial business insurance',cta:'Get Quote'}]},
+{id:'vending',name:'Vending Machine Route',industry:'vending',industryLabel:'Vending / Self-service',desc:'Place snack and drink machines in high-traffic spots. Collect cash and restock weekly. Semi-passive income.',format:'Asset-based route',budget:'$5k–$15k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:95,metrics:{ticket:'$200–$600/machine/mo',margin:'50–60%',frequency:'Weekly restock'},tags:['semi-passive','scalable','cash-flow'],why:'A single machine in a good location nets $300/mo profit for 30 minutes of restocking per week. At 20 machines you have a $6k/mo route that takes 2 days a week. Location is everything — laundromats, auto shops, break rooms.',steps:['Buy 2–3 refurbished combo machines ($1.5–$2.5k each) from local liquidators.','Pitch locations: laundromats, auto repair shops, warehouses, apartment lobbies.','Offer 10–15% commission or flat $50/mo rent to location owners.','Stock with data — track what sells, drop what does not.','Reinvest first 6 months of profit into more machines.','At 15+ machines, hire a stocker for $15/hr two days/week.'],margin_detail:'Machine doing $500/mo revenue. COGS ~40%. Commission ~10%. Net ~$250/mo/machine. A 20-machine route = ~$5k/mo net.',risk:'Bad locations kill ROI. Test before committing to long leases. Machines break — learn basic repair or budget $50/mo/machine for service.',pro:false,affiliates:[{id:'amazon-vending-supplies',label:'Vending machine locks + coin mechs',cta:'Buy on Amazon'},{id:'skillshare-vending',label:'Vending machine business course',cta:'Start Free Trial'},{id:'zenbusiness-llc',label:'Form your LLC in 10 minutes',cta:'Start with ZenBusiness'}]}
+];
+BUSINESSES.push(
+{id:'laundromat',name:'Laundromat',industry:'vending',industryLabel:'Vending / Self-service',desc:'Buy or build a coin/card-op laundry. Runs itself 80% of the time. Cash flow machine once stabilized.',format:'Facility-based',budget:'$80k–$300k',budgetTier:'high',team:'1–2',teamTier:'solo',boringScore:90,metrics:{ticket:'$8k–$25k/mo revenue',margin:'35–50%',frequency:'Daily'},tags:['semi-passive','real-estate','high-investment'],why:'Laundromats are the cockroach of small business — they survive every recession. Average store does $15k/mo revenue. Absentee-run with one attendant. SBA loans cover 80%+ of acquisition.',steps:['Scout locations — density of renters within 1 mile is the #1 metric.','Buy an existing laundromat (SBA 7a loan, 10% down) rather than building.','Retool: card payment systems increase revenue 15–20% vs coin-only.','Hire one part-time attendant for open/close and basic maintenance.','Add wash-and-fold service as premium upsell ($1.50–$2/lb).','Reinvest year-1 cash flow into upgrading oldest machines.'],margin_detail:'$15k/mo revenue. Utilities ~$3k. Rent ~$3k. Attendant ~$2k. Maintenance ~$1k. Net ~$6k/mo before debt service.',risk:'Lease terms are critical — negotiate 10-year with options. Water heater and sewer line failures are expensive. Budget $500/mo maintenance reserve.',pro:false,affiliates:[{id:'amazon-card-reader',label:'Card payment system for laundry',cta:'Buy on Amazon'},{id:'zenbusiness-llc',label:'Form your LLC',cta:'Start with ZenBusiness'},{id:'skillshare-laundromat',label:'Laundromat investing course',cta:'Start Free Trial'}]},
+{id:'self-storage',name:'Self-Storage Facility',industry:'vending',industryLabel:'Vending / Self-service',desc:'Rent out metal boxes. Tenants pay monthly, rarely visit, and forget to cancel. The ultimate boring cash cow.',format:'Facility-based',budget:'$250k+',budgetTier:'high',team:'1–2',teamTier:'solo',boringScore:93,metrics:{ticket:'$80–$250/unit/mo',margin:'60–70%',frequency:'Monthly'},tags:['passive','real-estate','high-margin'],why:'Self-storage has the highest profit margins in real estate. Tenants are sticky — average stay is 14 months. Climate-controlled units command premium pricing. Lien auctions recover bad debt.',steps:['Research supply/demand: look for areas with <7 sqft of storage per capita.','Buy existing facility or convert vacant retail/warehouse.','Install gate access, cameras, and online booking/payment.','Price 10–15% below the nearest competitor to fill fast.','Add tenant insurance as revenue stream ($12–$15/mo/unit, pure margin).','At 85%+ occupancy, raise rates 3–5% annually — tenants rarely leave over small increases.'],margin_detail:'100-unit facility at $150 avg/unit = $15k/mo. Property tax + insurance + maintenance ~$4k. Manager ~$2k. Net ~$9k/mo.',risk:'Oversupply in your market kills occupancy. Due diligence on local supply is non-negotiable. Environmental issues on land can surface late.',pro:false,affiliates:[{id:'zenbusiness-llc',label:'Form your storage LLC',cta:'Start with ZenBusiness'},{id:'next-insurance-property',label:'Commercial property insurance',cta:'Get Quote'}]},
+{id:'parking-striping',name:'Parking Lot Striping',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Repaint faded parking lot lines. Property managers must do this for ADA compliance. You show up at night, print money by sunrise.',format:'On-site service',budget:'$3k–$8k',budgetTier:'mid',team:'1–2',teamTier:'solo',boringScore:96,metrics:{ticket:'$400–$2k/lot',margin:'70%',frequency:'Every 1–2 yrs'},tags:['compliance','night-work','high-margin'],why:'ADA-compliant striping is legally required. Every commercial property needs it every 12–24 months. You work at night when lots are empty. Paint is cheap, labor is the only cost, and property managers cannot say no.',steps:['Buy a walk-behind striper machine, stencils, and traffic paint (~$3k).','Learn ADA specs: accessible space dimensions, signage requirements.','Drive commercial areas and photograph faded lots — that is your lead list.','Email property managers with the photo + a flat quote.','Work 8pm–4am when lots are empty. One lot per night.','Add fire lane painting, curb painting, and speed bumps as upsells.'],margin_detail:'A 200-stall lot: $1,200 job, 5hrs work. Paint ~$150. Machine wear ~$50. Net ~$1,000 = $200/hr.',risk:'Weather-dependent — rain cancels. Use fast-dry paint. Keep 3 jobs in the pipeline to backfill cancellations.',pro:false,affiliates:[{id:'amazon-striper-machine',label:'Parking lot striper machine',cta:'Buy on Amazon'},{id:'amazon-traffic-paint',label:'Traffic line paint (5 gal)',cta:'Buy on Amazon'},{id:'zenbusiness-llc',label:'Form your LLC',cta:'Start with ZenBusiness'}]},
+{id:'lawn',name:'Lawn Care & Mowing',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Mow lawns weekly. The oldest boring business in the book. Low ceiling per client, but route density makes it print.',format:'Route service',budget:'$1k–$5k',budgetTier:'low',team:'Solo → 3',teamTier:'solo',boringScore:82,metrics:{ticket:'$35–$75/lawn',margin:'50–60%',frequency:'Weekly, 32-wk season'},tags:['recurring','seasonal','route-density'],why:'Every homeowner with a lawn needs this. Route density is the secret — 15 lawns in one neighborhood = $600/day with minimal drive time. Seasonal, but snow services fill winter.',steps:['Buy a commercial mower, trimmer, blower, and trailer (~$3k used).','Door-knock the 3 densest neighborhoods within 10 minutes of your house.','Price at $40–$55 for standard residential (under 8k sqft).','Pack routes tight — never drive more than 5 minutes between jobs.','Add aeration, overseeding, and leaf cleanup as seasonal upsells.','Hire crew at $15/hr once you hit 40+ weekly accounts.'],margin_detail:'15 lawns/day × $45 avg = $675/day. Fuel ~$40. Dump fees ~$20. Net ~$615/day solo. 5 days × 32 weeks = $98k/season.',risk:'Equipment theft — lock your trailer, GPS-track your mowers. Physical burnout in summer — hydrate or hire.',pro:false,affiliates:[{id:'amazon-mower',label:'Commercial zero-turn mower',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — route optimization',cta:'Try Jobber'},{id:'next-insurance-lawn',label:'Lawn care business insurance',cta:'Get Quote'}]},
+{id:'junk',name:'Junk Removal',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Haul away what people are too lazy or too old to move themselves. Charge by the truckload, dump or resell.',format:'On-demand service',budget:'$3k–$10k',budgetTier:'mid',team:'2',teamTier:'small',boringScore:80,metrics:{ticket:'$250–$800/load',margin:'50–60%',frequency:'On-demand'},tags:['on-demand','physical','resell'],why:'Americans accumulate too much stuff and will pay handsomely to make it disappear. Average job is $400 for 2 hours of work. Estate cleanouts and contractor debris are premium tiers.',steps:['Buy or rent a dump trailer and a truck to pull it (~$5k used combo).','List on Google Business, Yelp, and local Facebook marketplace.','Quote on-site by volume: 1/4 load, 1/2 load, full load pricing.','Separate resellable items — furniture, appliances, scrap metal = bonus revenue.','Build relationships with realtors for estate cleanout referrals.','Add dumpster rental as a passive complement (drop, pick up, dump).'],margin_detail:'Full load at $600. Dump fee ~$80. Fuel ~$40. Helper ~$80. Net ~$400 in 2.5hrs = $160/hr.',risk:'Back injuries — always lift with a partner, use dollies. Hazmat items (paint, chemicals) — know what you cannot take.',pro:false,affiliates:[{id:'amazon-dump-trailer',label:'Dump trailer accessories + straps',cta:'Buy on Amazon'},{id:'housecall-pro',label:'Housecall Pro — online booking',cta:'Try Free'},{id:'next-insurance-hauling',label:'Hauling business insurance',cta:'Get Quote'}]}
+);
+BUSINESSES.push(
+{id:'xmas-lights',name:'Christmas Light Installation',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Hang holiday lights in Oct–Nov, take them down in Jan. Seasonal gold rush — 8 weeks of work funds 6 months off.',format:'Seasonal service',budget:'$2k–$5k',budgetTier:'low',team:'2–4',teamTier:'small',boringScore:88,metrics:{ticket:'$500–$3k/home',margin:'55–65%',frequency:'Annual'},tags:['seasonal','high-ticket','residential'],why:'Wealthy homeowners will pay $1,500+ to not climb on their roof in December. The season is short (8 weeks install, 2 weeks takedown) but incredibly dense. Repeat clients book you every year.',steps:['Buy commercial-grade LED lights, clips, extension cords, timers (~$2k).','Photograph 3 free installs on friends\' homes for your portfolio.','Target homes >3,000 sqft in affluent neighborhoods — door-hang flyers in September.','Price per linear foot of roofline: $5–$9/ft installed.','Offer storage service — keep their lights in your garage for $100/yr.','Take deposits in September to lock schedule and fund materials.'],margin_detail:'Average home: 200ft roofline × $7/ft = $1,400. Materials ~$300. Labor (2 guys, 4hrs) ~$240. Net ~$860.',risk:'Falls from roofs. Use proper harnesses, never work in rain/ice. Season is weather-dependent — build buffer days into schedule.',pro:false,affiliates:[{id:'amazon-xmas-lights',label:'Commercial LED Christmas lights (bulk)',cta:'Buy on Amazon'},{id:'amazon-light-clips',label:'Professional light clips + hangers',cta:'Buy on Amazon'},{id:'next-insurance-seasonal',label:'Seasonal business insurance',cta:'Get Quote'}]},
+{id:'sealcoating',name:'Driveway Sealcoating',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Spray-seal asphalt driveways to protect from cracks. Homeowners pay $200–$500 for 30 minutes of work.',format:'On-site service',budget:'$5k–$15k',budgetTier:'mid',team:'2',teamTier:'small',boringScore:91,metrics:{ticket:'$200–$500/driveway',margin:'65–75%',frequency:'Every 2–3 yrs'},tags:['recurring','route-density','physical'],why:'There are 50 million asphalt driveways in the US and they all need resealing every 2–3 years. You can do 8–12 driveways per day with a 2-person crew. Route density = money printer.',steps:['Buy a sealcoat sprayer, squeegee, edger, and 275-gal tote (~$5k).','Buy material in bulk — 275-gal totes at $0.80–$1.20/gal.','Door-hang the entire neighborhood when you book one job — offer "neighbor discount."','Price per sqft: $0.12–$0.18/sqft. Average 2-car driveway ~$350.','Crack-fill as upsell ($50–$150 per driveway, adds 10 min).','Scale to commercial lots for $2k–$10k jobs.'],margin_detail:'Residential driveway: $350 revenue. Material ~$30. Labor (2 guys, 40min) ~$40. Net ~$280 = ~$420/hr for the crew.',risk:'Rain ruins fresh sealcoat — check 48hr forecast before every job. Overspray on concrete/brick is hard to fix — tape edges carefully.',pro:false,affiliates:[{id:'amazon-sealcoat-sprayer',label:'Asphalt sealcoat sprayer system',cta:'Buy on Amazon'},{id:'zenbusiness-llc',label:'Form your LLC in 10 minutes',cta:'Start with ZenBusiness'},{id:'jobber-crm',label:'Jobber — scheduling + invoicing',cta:'Try Jobber'}]},
+{id:'detailing',name:'Mobile Car Detailing',industry:'logistics',industryLabel:'Mobile / Logistics',desc:'Detail cars at the customer\'s home or office. Low startup, high hourly rate, and tips on top.',format:'Mobile service',budget:'$2k–$6k',budgetTier:'low',team:'Solo',teamTier:'solo',boringScore:78,metrics:{ticket:'$150–$400/car',margin:'60–70%',frequency:'Monthly–quarterly'},tags:['mobile','tips','upsell'],why:'People will pay $250 to not spend their Saturday washing their car. Fleet accounts (dealerships, rental companies) provide stable base revenue. Interior detailing and ceramic coating are high-margin upsells.',steps:['Buy a pressure washer, wet/dry vac, polisher, and detail supplies (~$2k).','Get a water tank + generator if you want to be truly mobile (~$1k extra).','Offer a free detail to 3 people in exchange for Google reviews + photos.','Price: basic wash $80, full interior+exterior $200, ceramic coating $500+.','Partner with dealerships for lot details ($50–$80/car, volume play).','Sell monthly maintenance packages to retain recurring clients.'],margin_detail:'Full detail at $250. Products ~$20. Fuel/travel ~$15. Time: 3hrs. Net ~$215 = $72/hr. With ceramic coating: $500 for 5hrs = $100/hr.',risk:'Paint correction mistakes can damage clear coat. Practice on junkyard panels first. Carry liability insurance for property damage.',pro:false,affiliates:[{id:'amazon-detail-kit',label:'Professional car detailing starter kit',cta:'Buy on Amazon'},{id:'amazon-ceramic-coat',label:'Ceramic coating kit (pro grade)',cta:'Buy on Amazon'},{id:'housecall-pro',label:'Housecall Pro — mobile booking',cta:'Try Free'}]},
+{id:'dump-trailer',name:'Dump Trailer Rental',industry:'logistics',industryLabel:'Mobile / Logistics',desc:'Buy dump trailers, rent them out by the day/week. You drop off, they load, you pick up and dump. Semi-passive.',format:'Asset rental',budget:'$8k–$20k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:94,metrics:{ticket:'$250–$450/rental',margin:'70–80%',frequency:'Weekly'},tags:['semi-passive','asset-based','scalable'],why:'Contractors, landscapers, and homeowners need dump trailers constantly but do not want to own one. A $12k trailer rented 3×/week at $300 pays for itself in 14 weeks. Pure cash flow after that.',steps:['Buy a 14ft dump trailer — 14,000 GVWR, hydraulic lift (~$10k–$14k new).','List on Google Business, Facebook Marketplace, and equipment rental sites.','Price: $250/day, $400/weekend, $800/week. Require damage deposit.','Offer delivery/pickup for $75 each way (takes 30 min, adds $150).','Buy a second trailer once the first is booked 4+ days/week.','Add dumpster bag service as a lower-ticket complement.'],margin_detail:'3 rentals/week × $300 = $900/wk. Fuel for delivery ~$60. Maintenance reserve ~$40. Net ~$800/wk = $3,200/mo per trailer.',risk:'Renters abuse trailers — require photo documentation before/after. Carry commercial auto insurance. Hydraulic pump failure — budget for repair.',pro:false,affiliates:[{id:'amazon-trailer-accessories',label:'Dump trailer accessories + tie-downs',cta:'Buy on Amazon'},{id:'next-insurance-rental',label:'Equipment rental insurance',cta:'Get Quote'},{id:'zenbusiness-llc',label:'Form your rental LLC',cta:'Start with ZenBusiness'}]},
+{id:'locksmith',name:'Mobile Locksmith',industry:'trade',industryLabel:'Trade Services',desc:'Unlock cars, rekey homes, install commercial locks. Emergency calls pay premium rates at any hour.',format:'Mobile service',budget:'$3k–$8k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:84,metrics:{ticket:'$75–$300/call',margin:'60–70%',frequency:'On-demand'},tags:['emergency','mobile','trade-skill'],why:'People lock themselves out at 2am and will pay anything. A mobile locksmith averages $150/call with 30-minute jobs. Emergency calls are 2× regular rates. Locksmiths are aging out — massive supply gap.',steps:['Complete a locksmith training course (online + hands-on, ~$1k).','Buy a pick set, key cutting machine, blank keys, and lock hardware (~$3k).','Set up Google Business profile — "24/7 Mobile Locksmith" in your city.','Price: car lockout $75–$125, house rekey $100–$200, commercial install $200+.','Run Google Ads on "locksmith near me" — highest intent keyword in the trade.','Add smart lock installation as tech-forward upsell ($200–$400).'],margin_detail:'Car lockout: $100 for 20min work. Parts ~$5. Fuel ~$10. Net ~$85 = $255/hr effective. Commercial rekey: $250 for 1hr. Parts ~$40. Net ~$200/hr.',risk:'Licensing varies by state — check requirements before buying tools. Scam locksmiths have damaged the industry reputation — get licensed and bonded.',pro:false,affiliates:[{id:'amazon-locksmith-kit',label:'Professional locksmith tool set',cta:'Buy on Amazon'},{id:'skillshare-locksmith',label:'Locksmith fundamentals course',cta:'Start Free Trial'},{id:'next-insurance-trade',label:'Trade services insurance',cta:'Get Quote'}]}
+);
+BUSINESSES.push(
+{id:'portapotty',name:'Portable Restroom Rental',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Buy porta-potties, rent them to construction sites, events, and farms. Gross to think about, gorgeous to profit from.',format:'Asset rental + route service',budget:'$30k–$80k',budgetTier:'high',team:'1–2',teamTier:'small',boringScore:97,metrics:{ticket:'$150–$250/unit/wk',margin:'75%',frequency:'Weekly service'},tags:['recurring','asset-based','recession-proof'],why:'Every construction site is legally required to have portable restrooms. One $800 unit rented at $175/week pays for itself in under 5 weeks. Weekly pump-outs create a sticky service route. Nobody wants to enter this business — that is the moat.',steps:['Buy 10–15 units and a used pump truck (~$50k total to start).','Call every general contractor and event planner in a 30-mile radius.','Price: standard unit $150/wk with weekly service. Events: $200–$300/weekend.','Route the pump-outs efficiently — 20 units serviced in one day.','Add hand-wash stations and luxury restroom trailers for events ($500+/weekend).','At 50+ units, hire a route driver and focus on sales.'],margin_detail:'50 units at $175/wk = $8,750/wk revenue. Pump truck fuel + dump fees ~$800. Driver ~$1k. Maintenance ~$500. Net ~$6,450/wk.',risk:'Smell, mess, and social stigma keep competitors away (that is the point). Pump truck maintenance is critical — breakdowns halt revenue. CDL may be required for larger trucks.',pro:true,affiliates:[{id:'zenbusiness-llc',label:'Form your porta-potty LLC',cta:'Start with ZenBusiness'},{id:'next-insurance-rental',label:'Rental equipment insurance',cta:'Get Quote'}]},
+{id:'atm-route',name:'ATM Operating Route',industry:'vending',industryLabel:'Vending / Self-service',desc:'Place ATMs in bars, convenience stores, and laundromats. Earn $2.50–$3.50 per withdrawal. Load cash, collect surcharge.',format:'Asset-based route',budget:'$5k–$15k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:96,metrics:{ticket:'$400–$800/ATM/mo',margin:'65–75%',frequency:'Weekly cash load'},tags:['semi-passive','cash-flow','scalable'],why:'Cash is not dead — 70% of small transactions under $10 are still cash. Bars and corner stores need ATMs but do not want to own them. You earn the surcharge fee on every withdrawal. 10 ATMs = $5k+/mo.',steps:['Buy 2–3 ATMs — new ($2.5k each) or refurbished ($1.5k each).','Pitch high-foot-traffic locations: bars, strip clubs, laundromats, bodegas.','Offer location owners $0.25–$0.50 per transaction or flat $100/mo.','Load each ATM with $1k–$3k cash. Reload weekly based on usage.','Join an ATM processor (PAI, Cardtronics) for transaction processing.','Scale to 15–20 machines for $8k–$12k/mo with 1 day/week of servicing.'],margin_detail:'ATM doing 200 withdrawals/mo × $3 surcharge = $600. Location fee ~$75. Processing ~$50. Cash-in-transit ~$25. Net ~$450/ATM/mo.',risk:'Cash theft — bolt machines down, use safes with time-delay. Locations closing — diversify across 10+ locations. Regulation varies by state.',pro:true,affiliates:[{id:'zenbusiness-llc',label:'Form your ATM business LLC',cta:'Start with ZenBusiness'},{id:'next-insurance-atm',label:'ATM business insurance',cta:'Get Quote'}]},
+{id:'mobile-tire',name:'Mobile Tire Service',industry:'logistics',industryLabel:'Mobile / Logistics',desc:'Change, mount, and balance tires at the customer\'s location. Fleet accounts are the bread and butter.',format:'Mobile service',budget:'$25k–$60k',budgetTier:'high',team:'1–2',teamTier:'small',boringScore:89,metrics:{ticket:'$80–$200/service',margin:'45–55%',frequency:'As needed + fleet contracts'},tags:['mobile','fleet','trade-skill'],why:'Nobody wants to sit in a tire shop for 2 hours. Fleets (delivery vans, landscaping trucks, rental cars) cannot afford downtime. You come to them, change tires while they work, and charge a service premium on top of tire markup.',steps:['Buy a service van/truck, mobile tire changer, balancer, and air compressor (~$30k).','Get wholesale tire accounts (Tire Rack, US AutoForce) for 30–40% below retail.','Target fleet managers: landscapers, delivery services, property management.','Price: service call $40 + tire cost + mount/balance $25/tire.','Offer road hazard warranties as add-on revenue.','Add emergency roadside tire service at 1.5× regular pricing.'],margin_detail:'4-tire change: $120 service + $400 tire markup (buy at $80/tire, sell at $180). Total $520, cost ~$360. Net ~$160/job in 1hr.',risk:'Heavy lifting — use proper jacks and safety stands. Liability for vehicle damage — carry $1M commercial auto + GL insurance.',pro:true,affiliates:[{id:'amazon-tire-tools',label:'Mobile tire changer kit',cta:'Buy on Amazon'},{id:'next-insurance-mobile',label:'Mobile service business insurance',cta:'Get Quote'}]},
+{id:'dryer-vent',name:'Dryer Vent Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Clean lint out of dryer vents. Takes 30 minutes per home. Prevents house fires. Homeowners have no idea they need this.',format:'On-site service',budget:'$1k–$3k',budgetTier:'low',team:'Solo',teamTier:'solo',boringScore:93,metrics:{ticket:'$120–$180/job',margin:'80%',frequency:'Annual'},tags:['low-startup','high-margin','fire-safety'],why:'2,900 house fires per year are caused by dryer lint buildup. Most homeowners have never had their vent cleaned. A $150 job takes 30 minutes. You can do 10–12 per day with smart routing. The fear sell is real and ethical.',steps:['Buy a dryer vent cleaning kit: rotary brush, drill attachment, vacuum, inspection camera (~$800).','Get liability insurance and a simple business license.','Run Facebook ads targeting homeowners: "When was the last time you cleaned your dryer vent?"','Price flat: $129 for standard vent, $179 for roof-exit vents.','Bundle with HVAC duct inspection referrals for cross-sell revenue.','Add bird nest removal from vents as premium upsell ($200+).'],margin_detail:'$150/job × 10 jobs/day = $1,500/day. Materials ~$5/job. Fuel ~$40/day. Net ~$1,400/day solo.',risk:'Very low risk. Occasionally encounter birds/rodents in vents. Carry basic GL insurance. Roof-exit vents require ladder safety.',pro:true,affiliates:[{id:'amazon-dryer-vent-kit',label:'Dryer vent cleaning rotary brush kit',cta:'Buy on Amazon'},{id:'next-insurance-cleaning',label:'Cleaning business insurance',cta:'Get Quote'},{id:'jobber-crm',label:'Jobber — scheduling + invoicing',cta:'Try Jobber'}]},
+{id:'pool-cleaning',name:'Pool Cleaning Route',industry:'cleaning',industryLabel:'Cleaning',desc:'Clean residential pools weekly. Recurring monthly revenue per pool. Routes sell for 12× monthly gross.',format:'Route service',budget:'$3k–$8k',budgetTier:'mid',team:'Solo → 2',teamTier:'solo',boringScore:86,metrics:{ticket:'$120–$180/pool/mo',margin:'55–65%',frequency:'Weekly'},tags:['recurring','route-density','sellable'],why:'A pool route is one of the most sellable small businesses. 70 pools at $150/mo = $10.5k MRR. Routes trade at 10–12× monthly gross. That means a 70-pool route sells for $126k. Build it, sell it, repeat.',steps:['Get CPO (Certified Pool Operator) certification (~$300, 2 days).','Buy a pool service truck/van, chemicals, vacuum, test kit (~$4k).','Start with neighbors/Nextdoor — offer first month free to lock in annual contracts.','Price: basic weekly chemical + skim service $120–$150/mo. Full service $175–$200/mo.','Target 8–10 pools per day on tight routes.','At 70+ pools, hire a route tech at $18/hr and start building route #2.'],margin_detail:'70 pools × $150/mo = $10,500 MRR. Chemicals ~$1,500/mo. Fuel ~$600. Equipment ~$200. Net ~$8,200/mo solo.',risk:'Chemical handling — always wear gloves and goggles. Green pools require extra time and chemicals. Liability for property damage (pool equipment, decking).',pro:true,affiliates:[{id:'amazon-pool-kit',label:'Pool cleaning chemical starter kit',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — route scheduling',cta:'Try Jobber'},{id:'next-insurance-pool',label:'Pool service insurance',cta:'Get Quote'}]}
+);
+BUSINESSES.push(
+{id:'bin-cleaning',name:'Trash Bin Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Power-wash residential trash cans after pickup day. Subscription model. Route density king — 60 bins/hour possible.',format:'Route subscription',budget:'$15k–$40k',budgetTier:'mid',team:'1–2',teamTier:'small',boringScore:95,metrics:{ticket:'$10–$25/bin/clean',margin:'70%',frequency:'Monthly subscription'},tags:['recurring','route-density','subscription'],why:'Nobody wants a stinky trash can. $8/mo per bin is an easy yes. A dense route of 500 subscribers = $4k MRR for 2 days of work per week. The truck-mounted system cleans 60 bins/hour.',steps:['Buy or build a bin-cleaning truck with mounted pressure washer and water reclaim system (~$20k–$35k).','Target HOAs and dense suburban neighborhoods — one HOA can give you 100+ subscribers.','Price: $8–$12/mo for monthly service, $20–$25 for one-time deep clean.','Route on trash pickup days — clean bins right after the truck empties them.','Door-hang flyers on trash day: "Your bin is clean — want to keep it that way?"','Add disinfecting/deodorizing as premium tier ($5/mo extra).'],margin_detail:'500 bins × $10/mo = $5,000 MRR. Fuel + water ~$600. Insurance ~$200. Helper ~$800. Net ~$3,400/mo for ~8 days of work.',risk:'Water reclaim regulations vary by municipality — check before starting. Truck maintenance is critical (pump failures). HOA politics can lose you 100 clients at once.',pro:true,affiliates:[{id:'amazon-bin-cleaning',label:'Bin cleaning system components',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — subscription management',cta:'Try Jobber'},{id:'next-insurance-cleaning',label:'Cleaning business insurance',cta:'Get Quote'}]},
+{id:'notary',name:'Mobile Notary / Loan Signing',industry:'trade',industryLabel:'Trade Services',desc:'Notarize documents at people\'s homes. Loan signings pay $75–$200 per appointment. Startup cost: almost zero.',format:'Mobile service',budget:'$200–$500',budgetTier:'low',team:'Solo',teamTier:'solo',boringScore:89,metrics:{ticket:'$75–$200/signing',margin:'90%',frequency:'3–5/week'},tags:['low-startup','flexible','side-hustle'],why:'Every real estate closing, refinance, and legal document needs notarization. Title companies need mobile notaries who can meet clients on their schedule. Loan signing agents earn $125–$200 per signing for 45 minutes of work.',steps:['Become a notary in your state ($50–$150, varies by state).','Complete Loan Signing Agent certification (NNA or equivalent, ~$150).','Buy a printer, quality pen set, and notary stamp (~$100).','Create profiles on SigningOrder.com, Snapdocs, and NotaryRotary.','Market to local title companies and real estate attorneys directly.','Do your first 20 signings perfectly — reviews and repeat business follow.'],margin_detail:'Loan signing: $150 per appointment, 45min + 15min travel. Printing ~$5. Fuel ~$10. Net ~$135 = ~$135/hr effective.',risk:'Errors on loan documents can have legal consequences. Triple-check every signature and date. Carry E&O (errors & omissions) insurance.',pro:true,affiliates:[{id:'amazon-notary-kit',label:'Notary stamp + supplies kit',cta:'Buy on Amazon'},{id:'skillshare-notary',label:'Loan signing agent course',cta:'Start Free Trial'},{id:'zenbusiness-llc',label:'Form your notary LLC',cta:'Start with ZenBusiness'}]},
+{id:'concrete-leveling',name:'Concrete Leveling (Mudjacking)',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Lift sunken concrete slabs by injecting foam or slurry underneath. 60% cheaper than replacement. Huge tickets.',format:'On-site service',budget:'$30k–$80k',budgetTier:'high',team:'2',teamTier:'small',boringScore:94,metrics:{ticket:'$800–$3k/job',margin:'60%',frequency:'On-demand'},tags:['high-ticket','specialized','b2b'],why:'Every city has millions of sqft of sunken sidewalks, driveways, and garage floors. Replacement costs $8–$15/sqft. Leveling costs $3–$6/sqft. You save the customer 50–60%. Insurance companies prefer leveling over replacement.',steps:['Invest in a foam injection rig or mudjacking pump (~$30k–$60k for equipment).','Get trained by the equipment manufacturer (usually included with purchase).','Market to property managers, municipalities, and insurance adjusters.','Price per sqft: $3–$6 for residential, $4–$8 for commercial with access challenges.','Build relationships with concrete contractors who refer jobs they cannot fix.','Add crack sealing and joint caulking as complementary services.'],margin_detail:'Average residential job: $1,500. Foam material ~$200. Labor (2 people, 3hrs) ~$240. Equipment wear ~$60. Net ~$1,000.',risk:'Equipment is expensive — breakdown means lost revenue. Voids under slabs can be larger than expected — learn to estimate accurately. Carry $2M liability.',pro:true,affiliates:[{id:'zenbusiness-llc',label:'Form your leveling business LLC',cta:'Start with ZenBusiness'},{id:'next-insurance-contractor',label:'Contractor insurance',cta:'Get Quote'}]},
+{id:'estate-sales',name:'Estate Sale Liquidation',industry:'niche',industryLabel:'Niche B2B',desc:'Run estate sales for families after a death, downsizing, or divorce. Take 30–40% commission on everything sold.',format:'Commission-based service',budget:'$2k–$5k',budgetTier:'low',team:'2–3',teamTier:'small',boringScore:87,metrics:{ticket:'$2.5k–$8k commission/sale',margin:'80%',frequency:'2–4 sales/mo'},tags:['commission','low-startup','networking'],why:'Baby boomers are downsizing en masse. Every estate is full of stuff that needs to be priced, displayed, and sold in a weekend. Families are too emotional or too busy. You take 35% of gross sales. A $15k estate sale nets you $5,250.',steps:['Shadow 3 existing estate sale companies to learn pricing and flow.','Build a pricing reference library — furniture, collectibles, tools, jewelry.','Create a simple website and list on EstateSales.net / EstateSales.org.','Target elder law attorneys, senior living facilities, and funeral homes for referrals.','Run sales Friday–Sunday. Price to sell — volume beats margin.','Hire day-of helpers at $15/hr for setup, cashiering, and security.'],margin_detail:'$15k gross sale × 35% commission = $5,250. Helpers (3 people, 2 days) ~$720. Ads ~$100. Net ~$4,430 per sale. 3 sales/mo = $13k+.',risk:'Theft during sales — hire security for high-value estates. Family disputes over pricing — get written authorization before every sale. Liability for broken items.',pro:true,affiliates:[{id:'zenbusiness-llc',label:'Form your estate sale LLC',cta:'Start with ZenBusiness'},{id:'amazon-pricing-guides',label:'Antique + collectible pricing guides',cta:'Buy on Amazon'}]},
+{id:'mobile-welding',name:'Mobile Welding',industry:'trade',industryLabel:'Trade Services',desc:'Weld on-site for farms, construction sites, and industrial facilities. Bring the shop to the customer.',format:'Mobile service',budget:'$10k–$30k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:83,metrics:{ticket:'$90–$150/hr + materials',margin:'55–65%',frequency:'On-demand + contracts'},tags:['trade-skill','mobile','high-hourly'],why:'Fixed weld shops cannot go to the customer. Farms need fence repairs, contractors need structural fixes, and factories need emergency repairs — all on-site. Mobile welders charge $100+/hr and rarely lack work.',steps:['Get welding certifications (AWS) if you do not already have them.','Build a welding rig: truck + welder/generator, gas bottles, grinders, consumables (~$15k–$25k).','Register on welding job boards and Google Business.','Target farms (fence + equipment repair), construction (structural), and marine (boat repair).','Price: shop rate $90–$120/hr, emergency $150+/hr, plus materials at 30% markup.','Add fabrication services for custom gates, railings, and art pieces.'],margin_detail:'8hr day at $110/hr = $880. Consumables ~$80. Fuel ~$50. Net ~$750/day = ~$16k/mo at 22 working days.',risk:'Burns, fumes, UV exposure — full PPE mandatory. Liability for structural welds — carry professional liability + GL. Fire risk on-site — keep extinguisher on rig.',pro:true,affiliates:[{id:'amazon-welding-rig',label:'Portable welder/generator combo',cta:'Buy on Amazon'},{id:'next-insurance-trade',label:'Trade services insurance',cta:'Get Quote'}]}
+);
+BUSINESSES.push(
+{id:'roof-softwash',name:'Soft Wash Roof Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Spray roofs with low-pressure chemical solution to kill algae, moss, and black streaks. $400–$900 per roof.',format:'On-site service',budget:'$3k–$8k',budgetTier:'mid',team:'2',teamTier:'small',boringScore:90,metrics:{ticket:'$400–$900/roof',margin:'75%',frequency:'Every 2–3 yrs'},tags:['high-ticket','recurring','specialized'],why:'Black streaks on shingle roofs are caused by algae (Gloeocapsa magma). Pressure washing damages shingles. Soft washing is the correct method and most homeowners do not know it exists. Insurance companies sometimes mandate it.',steps:['Buy a soft wash pump, 12V system, chemical tank, hose, and nozzles (~$3k).','Learn the SH (sodium hypochlorite) mix ratios for shingle, tile, and metal roofs.','Photograph before/after on 3 free jobs — the visual difference sells itself.','Price per sqft of roof: $0.20–$0.40. Average 2,000sqft roof = $500.','Run Facebook ads with before/after photos targeting homeowners 35–65.','Add gutter cleaning, house wash, and driveway cleaning as bundle upsells.'],margin_detail:'Average roof: $600. Chemicals ~$40. Labor (2 guys, 2hrs) ~$80. Net ~$480 = $240/hr for the crew.',risk:'Chemical burns — SH is corrosive, wear full PPE. Plant damage from runoff — pre-wet and rinse landscaping. Roof walking is dangerous — use harness when needed.',pro:true,affiliates:[{id:'amazon-softwash-pump',label:'12V soft wash pump system',cta:'Buy on Amazon'},{id:'next-insurance-cleaning',label:'Roof cleaning insurance',cta:'Get Quote'},{id:'jobber-crm',label:'Jobber — scheduling + invoicing',cta:'Try Jobber'}]},
+{id:'ev-charger',name:'EV Charger Installation',industry:'trade',industryLabel:'Trade Services',desc:'Install Level 2 EV chargers in homes and businesses. Growing demand, limited qualified installers.',format:'Installation service',budget:'$10k–$25k',budgetTier:'mid',team:'2',teamTier:'small',boringScore:75,metrics:{ticket:'$400–$1,500/install',margin:'45–55%',frequency:'Growing demand'},tags:['growing-market','electrical','b2b'],why:'EV sales are doubling every 2 years. Every EV buyer needs a home charger. Commercial properties are adding chargers for tenants and customers. Licensed electricians who specialize in EVSE installations are booked months out.',steps:['Get or verify your electrician license (journeyman minimum, master preferred).','Get EVITP (Electric Vehicle Infrastructure Training Program) certification.','Partner with EV charger brands (ChargePoint, Emporia, Wallbox) as certified installer.','Price: residential $400–$800 labor + parts. Commercial $800–$2k+ depending on panel work.','Market to EV dealerships for installer referrals.','Add panel upgrades and solar integration as premium services.'],margin_detail:'Residential install: $700 labor charge. Parts markup ~$100. Helper ~$80. Net ~$520 for 3hrs = $173/hr.',risk:'Electrical work requires licensing — unlicensed work is illegal and dangerous. Code compliance varies by jurisdiction. Carry electrician-specific E&O + GL insurance.',pro:true,affiliates:[{id:'amazon-ev-tools',label:'EV installation tool kit',cta:'Buy on Amazon'},{id:'next-insurance-electrical',label:'Electrician business insurance',cta:'Get Quote'}]},
+{id:'snow-plowing',name:'Snow Plowing Contracts',industry:'outdoor',industryLabel:'Outdoor / Property',desc:'Plow commercial parking lots and residential driveways after snowfall. Seasonal gold mine in northern states.',format:'Seasonal contract service',budget:'$20k–$60k',budgetTier:'high',team:'2–4',teamTier:'small',boringScore:88,metrics:{ticket:'$200–$500/push commercial',margin:'50–65%',frequency:'Seasonal (Nov–Mar)'},tags:['seasonal','contracts','equipment'],why:'Commercial properties must be plowed for liability reasons. Contracts are signed before winter and guarantee revenue per push or per season. A 10-contract portfolio with one truck can gross $60k+ in a 4-month season.',steps:['Buy a plow truck — 3/4 ton pickup with 8ft plow (~$25k used, equipped).','Buy a salt spreader for deicing services ($2k–$5k, adds 30% revenue).','Sign seasonal contracts in September — per-push ($200–$500) or flat seasonal ($3k–$8k).','Target commercial: shopping centers, medical offices, churches, apartment complexes.','Hire a backup driver — you cannot be sick when it snows.','Add sidewalk shoveling crews for full-service contracts.'],margin_detail:'10 commercial contracts × $400/push × 15 pushes/season = $60k. Fuel + salt ~$8k. Helper ~$6k. Truck maintenance ~$3k. Net ~$43k in 4 months.',risk:'Equipment failure in a storm is catastrophic — keep backup parts and relationships with other plow operators. Liability for slip-and-fall is high — document every service with photos and timestamps.',pro:true,affiliates:[{id:'amazon-plow-accessories',label:'Snow plow accessories + markers',cta:'Buy on Amazon'},{id:'next-insurance-snow',label:'Snow removal business insurance',cta:'Get Quote'},{id:'jobber-crm',label:'Jobber — contract management',cta:'Try Jobber'}]},
+{id:'airbnb-cleaning',name:'Airbnb Turnover Cleaning',industry:'cleaning',industryLabel:'Cleaning',desc:'Clean short-term rentals between guests. Same-day turnovers pay premium. Hosts desperately need reliable cleaners.',format:'On-demand service',budget:'$500–$2k',budgetTier:'low',team:'2–5',teamTier:'small',boringScore:79,metrics:{ticket:'$80–$150/turn',margin:'55–65%',frequency:'2–5×/week/property'},tags:['recurring','on-demand','hospitality'],why:'Airbnb hosts need spotless turnovers in 3–4 hour windows between guests. Reliability is the #1 value — hosts will pay 30% more for a cleaner who never cancels. One host with 5 properties = $2k+/mo recurring.',steps:['Create a turnover checklist matching Airbnb Superhost standards.','Start with 2–3 hosts on AirBnB cleaning Facebook groups and TurnoverBnB.','Price per bedroom: studio $80, 1BR $100, 2BR $130, 3BR+ $160.','Stock your own supplies — do not rely on host supplies being adequate.','Build a team of 2–3 cleaners so you can handle same-day double bookings.','Add linen service (you own + launder the linens) for extra $30–$50/turn.'],margin_detail:'2BR turnover: $130 revenue, 2hrs with 2 cleaners. Labor ~$50. Supplies ~$10. Net ~$70/turn. 4 turns/day = $280 net.',risk:'Last-minute cancellations — charge cancellation fees in your contract. Quality drops when you scale — inspect randomly. Hosts can be demanding — set clear scope.',pro:true,affiliates:[{id:'amazon-cleaning-supplies',label:'Airbnb cleaning supply kit',cta:'Buy on Amazon'},{id:'jobber-crm',label:'Jobber — turnover scheduling',cta:'Try Jobber'}]},
+{id:'drone-inspection',name:'Drone Roof Inspection',industry:'niche',industryLabel:'Niche B2B',desc:'Fly drones over roofs for insurance adjusters, roofers, and property managers. No ladders, faster reports, better data.',format:'B2B service',budget:'$3k–$8k',budgetTier:'mid',team:'Solo',teamTier:'solo',boringScore:82,metrics:{ticket:'$150–$400/inspection',margin:'75%',frequency:'On-demand + contracts'},tags:['tech','b2b','low-physical'],why:'Insurance companies and roofers need roof imagery for claims and estimates. Drones do in 15 minutes what a ladder inspection takes 2 hours to do. Thermal cameras detect moisture damage invisible to the eye. FAA Part 107 is easy to get.',steps:['Get FAA Part 107 Remote Pilot Certificate (~$175 test fee, 2 weeks of study).','Buy a DJI drone with a quality camera + spare batteries (~$2k–$4k).','Build a report template: overview images, damage callouts, measurements.','Market to: insurance adjusters, roofing companies, property managers.','Price: basic visual inspection $150–$250. Thermal inspection $300–$500.','Add 3D roof modeling with photogrammetry software as premium service.'],margin_detail:'3 inspections/day × $250 = $750/day. Battery + wear ~$15. Fuel ~$20. Net ~$715/day = ~$15k/mo at 22 days.',risk:'FAA regulations — never fly over people, near airports, or above 400ft without waiver. Crashes happen — carry hull insurance and liability. Weather-dependent.',pro:true,affiliates:[{id:'amazon-drone-kit',label:'DJI inspection drone + accessories',cta:'Buy on Amazon'},{id:'skillshare-drone',label:'Part 107 exam prep course',cta:'Start Free Trial'},{id:'next-insurance-drone',label:'Drone business insurance',cta:'Get Quote'}]}
+);
+
+/* ============ EMAIL TEMPLATES (Pro) ============ */
+const EMAIL_TEMPLATES = {
+cleaning: {subject:'Quick question about [Property Name]',body:'Hi [First Name],\n\nI drive past [Property] every week and noticed the [windows/gutters/walkways] could use a refresh.\n\nI run a small crew that handles exactly this — flat quote, fully insured, work done before tenants notice.\n\nFirst clean is $[X], and I can be in/out Tuesday or Thursday next week.\n\nWant a 30-second quote by photo? Just reply with a pic.\n\n— [Your Name], [Phone]'},
+vending: {subject:'15-second pitch: passive revenue for [Business Name]',body:'Hey [First Name],\n\nI place [snack/drink/ATM] machines in high-traffic spots like yours — you get 15% of net or a flat $[X]/month, your choice.\n\nZero cost, zero maintenance — I restock and service. If revenue is bad after 60 days, I pull it for free.\n\nThree locations near you already running. Worth a 5-minute call this week?\n\n— [Your Name], [Phone]'},
+outdoor: {subject:'Your lot is fading — quick fix before [season]',body:'Hi [First Name],\n\nDrove your lot at [Address] this morning. The striping is at ~40% visibility — that\'s an ADA risk plus it looks tired.\n\nWe restripe lots like yours overnight (no business interruption). Flat $[X] for [Y] stalls, done by sunrise.\n\nFree lot map + quote in 24h if you reply with "yes."\n\n— [Your Name], [Phone]'},
+trade: {subject:'[Specific service] for [Company] — local, licensed, fast',body:'Hi [First Name],\n\nI\'m a local [licensed welder / mobile notary / certified EV installer] working with [2-3 nearby businesses] you may know.\n\nSaw [Company] is [growing / expanding fleet / hiring] — usually that means you need [X] sooner than expected.\n\nStandard call-out is $[X], same-week availability. Happy to be your on-call resource.\n\nReply for rate sheet, no pressure.\n\n— [Your Name], [License #], [Phone]'},
+logistics: {subject:'On-site [service] for your fleet — saves [X] hrs/week',body:'Hi [First Name],\n\nYour team probably loses half a day every time a [vehicle / trailer / bin] needs [service].\n\nI come to your yard, do the work in the gap, you don\'t lose billable hours.\n\nFirst service is half price for fleet customers. Most clients save $[X]/month after switching.\n\nWorth a 10-minute walkthrough of your yard?\n\n— [Your Name], [Phone]'},
+niche: {subject:'[Specific outcome] without the [usual cost / hassle]',body:'Hi [First Name],\n\nMost [realtors / property managers / roofers] still pay $[X] for [traditional method] when [specific niche solution] does the same job in [Y] less time.\n\nI run [Service]. Last week we [specific result with number] for [comparable client].\n\nFree demo on your next [property / claim / job]. If it doesn\'t save you time, no charge.\n\nOpen Thursday or Friday next week?\n\n— [Your Name], [Phone]'}
+};
+
+/* ============ ROI CALCULATORS (Pro — top 5) ============ */
+const ROI_CALCS = {
+pressure: {
+  label:'Pressure Washing ROI',
+  inputs:[{id:'pw_jobs',label:'Jobs per week',val:8},{id:'pw_ticket',label:'Avg ticket ($)',val:300},{id:'pw_costs',label:'Monthly fixed costs ($)',val:800},{id:'pw_startup',label:'Startup cost ($)',val:3000}],
+  calc: function(v){
+    var mo = v.pw_jobs*4.33*v.pw_ticket;
+    var net = mo*0.65 - v.pw_costs;
+    return [{l:'Monthly Revenue',v:'$'+Math.round(mo).toLocaleString()},{l:'Monthly Profit (65% margin)',v:'$'+Math.round(net).toLocaleString()},{l:'Effective $/hr',v:'$'+Math.round(net/(v.pw_jobs*4.33*2))},{l:'Months to ROI',v:Math.max(1,Math.ceil(v.pw_startup/net))}];
+  }
+},
+vending: {
+  label:'Vending Machine ROI',
+  inputs:[{id:'vm_count',label:'# of machines',val:5},{id:'vm_sales',label:'Avg sales/machine/week ($)',val:120},{id:'vm_cogs',label:'COGS %',val:40},{id:'vm_commission',label:'Location commission %',val:10}],
+  calc: function(v){
+    var rev = v.vm_count*v.vm_sales*4.33;
+    var net = rev*(1-v.vm_cogs/100-v.vm_commission/100);
+    return [{l:'Monthly Revenue',v:'$'+Math.round(rev).toLocaleString()},{l:'Monthly Net',v:'$'+Math.round(net).toLocaleString()},{l:'Net per Machine/mo',v:'$'+Math.round(net/v.vm_count)},{l:'Route Value (30x mo)',v:'$'+Math.round(net*30).toLocaleString()}];
+  }
+},
+lawn: {
+  label:'Lawn Care ROI',
+  inputs:[{id:'lc_routes',label:'Lawns per day',val:12},{id:'lc_ticket',label:'Avg ticket ($)',val:45},{id:'lc_days',label:'Days per week',val:5},{id:'lc_fuel',label:'Daily fuel + dump ($)',val:50}],
+  calc: function(v){
+    var wk = v.lc_routes*v.lc_ticket*v.lc_days;
+    var net = wk - v.lc_fuel*v.lc_days;
+    var season = net*32;
+    return [{l:'Weekly Revenue',v:'$'+Math.round(v.lc_routes*v.lc_ticket*v.lc_days).toLocaleString()},{l:'Weekly Profit',v:'$'+Math.round(net).toLocaleString()},{l:'32-Week Season Profit',v:'$'+Math.round(season).toLocaleString()},{l:'$/billable hour',v:'$'+Math.round(net/(v.lc_days*8))}];
+  }
+},
+gutter: {
+  label:'Gutter Cleaning ROI',
+  inputs:[{id:'gc_jobs',label:'Jobs per week',val:10},{id:'gc_ticket',label:'Avg ticket ($)',val:160},{id:'gc_adspend',label:'Monthly ad spend ($)',val:200},{id:'gc_startup',label:'Startup cost ($)',val:800}],
+  calc: function(v){
+    var mo = v.gc_jobs*4.33*v.gc_ticket;
+    var net = mo*0.60 - v.gc_adspend;
+    return [{l:'Monthly Revenue',v:'$'+Math.round(mo).toLocaleString()},{l:'Monthly Profit (60%)',v:'$'+Math.round(net).toLocaleString()},{l:'Profit per Job',v:'$'+Math.round(v.gc_ticket*0.6)},{l:'Months to ROI',v:Math.max(1,Math.ceil(v.gc_startup/net))}];
+  }
+},
+'bin-cleaning': {
+  label:'Trash Bin Cleaning ROI',
+  inputs:[{id:'bc_subs',label:'# subscribers',val:200},{id:'bc_price',label:'$/bin/month',val:10},{id:'bc_density',label:'Bins per hour',val:30},{id:'bc_costs',label:'Monthly costs ($)',val:1200}],
+  calc: function(v){
+    var mrr = v.bc_subs*v.bc_price;
+    var net = mrr - v.bc_costs;
+    var hrs = v.bc_subs/v.bc_density;
+    return [{l:'MRR',v:'$'+Math.round(mrr).toLocaleString()},{l:'Monthly Profit',v:'$'+Math.round(net).toLocaleString()},{l:'Hours/month worked',v:Math.round(hrs*12)},{l:'Business Value (3x ARR)',v:'$'+Math.round(mrr*12*3).toLocaleString()}];
+  }
+}
+};
+
+/* ============ STARTUP CHECKLIST ============ */
+const CHECKLIST = [
+'Choose a business name and check availability (state + domain)',
+'Form an LLC ($50–$200 depending on state)',
+'Get an EIN from IRS.gov (free, instant)',
+'Open a business bank account (separate from personal)',
+'Get general liability insurance ($40–$80/mo)',
+'Buy initial equipment and supplies',
+'Set up Google Business Profile (free, critical for local SEO)',
+'Build a one-page website or landing page',
+'Set up invoicing + payments (Jobber, Square, or Wave)',
+'Get your first 3 customers (friends, neighbors, door-knocking)',
+'Deliver excellent service and ask for Google reviews',
+'Reinvest first 90 days of profit into growth'
+];
+
+
+/* ============ STATE + PRO DETECTION ============ */
+const state = {
+  filters: { industry:'', budget:'', team:'', search:'' },
+  shuffled: false,
+  order: [],
+  isPro: false
+};
+
+function detectPro(){
+  const p = new URLSearchParams(location.search);
+  if (p.get('pro') === 'true') localStorage.setItem('boringMoneyPro','true');
+  state.isPro = localStorage.getItem('boringMoneyPro') === 'true';
+  document.body.classList.toggle('is-pro', state.isPro);
+}
+
+/* ============ DATES ============ */
+(function(){
+  var d = new Date();
+  document.getElementById('todayDate').textContent = d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'}).toUpperCase();
+  document.getElementById('year').textContent = d.getFullYear();
+})();
+
+/* ============ BANNER DISMISS ============ */
+if (sessionStorage.getItem('proBannerDismissed')==='1') document.getElementById('proBanner').style.display='none';
+
+/* ============ TOAST ============ */
+function toast(m){var t=document.createElement('div');t.className='toast';t.textContent=m;document.body.appendChild(t);setTimeout(function(){t.remove()},2200)}
+
+/* ============ HELPERS ============ */
+function matchBudget(tier,f){
+  if(!f) return true;
+  return tier===f;
+}
+function matchTeam(tier,f){
+  if(!f) return true;
+  if(f==='solo') return tier==='solo';
+  if(f==='small') return tier==='small';
+  if(f==='larger') return false;
+  return true;
+}
+function matchSearch(biz,q){
+  if(!q) return true;
+  q=q.toLowerCase();
+  return biz.name.toLowerCase().includes(q)||biz.desc.toLowerCase().includes(q)||biz.tags.some(function(t){return t.includes(q)});
+}
+function filterBiz(list){
+  var f=state.filters;
+  return list.filter(function(b){
+    return (!f.industry||b.industry===f.industry)
+      && matchBudget(b.budgetTier,f.budget)
+      && matchTeam(b.teamTier,f.team)
+      && matchSearch(b,f.search);
+  });
+}
+function shuffleArray(a){
+  var arr=a.slice();
+  for(var i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var tmp=arr[i];arr[i]=arr[j];arr[j]=tmp;}
+  return arr;
+}
+
+/* ============ CARD HTML ============ */
+function cardHTML(b){
+  var locked = b.pro && !state.isPro;
+  var cls = 'card'+(b.pro?' pro':'')+(locked?' locked':'');
+  var tags = b.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('');
+  var lockOverlay = locked ? '<div class="lock-overlay"><div class="lock-icon">&#128274;</div><h4>Pro Pack</h4><p>Unlock 15 more businesses for $19</p></div>' : '';
+  var proBadge = b.pro ? '<span class="pro-badge">PRO</span>' : '';
+  return '<div class="'+cls+'" data-id="'+b.id+'" onclick="openCard(\''+b.id+'\')">'+
+    '<span class="industry-tag">'+b.industryLabel+'</span>'+
+    proBadge+
+    '<div class="score-stamp"><span class="n">'+b.boringScore+'</span><span class="l">BORING</span></div>'+
+    '<h3>'+b.name+'</h3>'+
+    '<p class="desc">'+b.desc+'</p>'+
+    '<div class="stats"><div>Budget<b>'+b.budget+'</b></div><div>Team<b>'+b.team+'</b></div><div>Avg Ticket<b>'+b.metrics.ticket+'</b></div><div>Margin<b>'+b.metrics.margin+'</b></div></div>'+
+    '<div class="tags">'+tags+'</div>'+
+    lockOverlay+
+  '</div>';
+}
+
+/* ============ RENDER ============ */
+function render(){
+  var grid = document.getElementById('grid');
+  var free = BUSINESSES.filter(function(b){return !b.pro});
+  var pro = BUSINESSES.filter(function(b){return b.pro});
+  var ff = filterBiz(free);
+  var pf = filterBiz(pro);
+  if(state.shuffled){ff=shuffleArray(ff);pf=shuffleArray(pf);}
+  var html = '';
+  html += '<div class="grid-heading"><h2>Free Businesses</h2><span class="meta">'+ff.length+' of '+free.length+' ideas</span></div>';
+  if(ff.length===0) html+='<div class="empty-state">No matches — try different filters.</div>';
+  else ff.forEach(function(b){html+=cardHTML(b)});
+  html += '<div class="grid-heading"><h2>Pro Pack <span style="color:#c9a227">★</span></h2><span class="meta">'+pf.length+' of '+pro.length+(state.isPro?' ideas — unlocked':' ideas — locked')+'</span></div>';
+  if(pf.length===0) html+='<div class="empty-state">No matches in Pro Pack.</div>';
+  else pf.forEach(function(b){html+=cardHTML(b)});
+  grid.innerHTML = html;
+  state.shuffled = false;
+}
+
+/* ============ SHUFFLE + RESET ============ */
+function shuffle(){
+  state.shuffled = true;
+  render();
+  document.getElementById('grid').scrollIntoView({behavior:'smooth'});
+  toast('Shuffled!');
+}
+function resetFilters(){
+  state.filters = {industry:'',budget:'',team:'',search:''};
+  document.getElementById('f-industry').value='';
+  document.getElementById('f-budget').value='';
+  document.getElementById('f-team').value='';
+  document.getElementById('f-search').value='';
+  render();
+  toast('Filters reset');
+}
+
+/* ============ FILTER WIRING ============ */
+['f-industry','f-budget','f-team'].forEach(function(id){
+  document.getElementById(id).addEventListener('change',function(){
+    state.filters[id.replace('f-','')]=this.value;
+    render();
+  });
+});
+document.getElementById('f-search').addEventListener('input',function(){
+  state.filters.search=this.value;
+  render();
+});
+
+
+/* ============ OPEN CARD MODAL ============ */
+function openCard(id){
+  var b = BUSINESSES.find(function(x){return x.id===id});
+  if(!b) return;
+  if(b.pro && !state.isPro){
+    document.getElementById('unlockModal').classList.add('open');
+    return;
+  }
+  var modal = document.getElementById('modal');
+  document.getElementById('modalTitle').textContent = b.name;
+  document.getElementById('modalSub').textContent = b.industryLabel+' · '+b.format+' · Boring Score: '+b.boringScore+'/100';
+  var html = '';
+  // Stats
+  html += '<section><div class="stat-row">';
+  html += '<div class="stat-box"><span class="l">Budget</span><span class="v">'+b.budget+'</span></div>';
+  html += '<div class="stat-box"><span class="l">Team</span><span class="v">'+b.team+'</span></div>';
+  html += '<div class="stat-box"><span class="l">Avg Ticket</span><span class="v">'+b.metrics.ticket+'</span></div>';
+  html += '<div class="stat-box"><span class="l">Margin</span><span class="v">'+b.metrics.margin+'</span></div>';
+  html += '<div class="stat-box"><span class="l">Frequency</span><span class="v">'+b.metrics.frequency+'</span></div>';
+  html += '</div></section>';
+  // Why
+  html += '<section><h3>Why This Works</h3><p>'+b.why+'</p></section>';
+  // Steps
+  html += '<section><h3>How to Start</h3><ol>';
+  b.steps.forEach(function(s){html+='<li>'+s+'</li>'});
+  html += '</ol></section>';
+  // Margins
+  html += '<section><h3>Margin Breakdown</h3><p>'+b.margin_detail+'</p></section>';
+  // Risk
+  html += '<section><h3>Risk</h3><p>'+b.risk+'</p></section>';
+  // Affiliate links
+  html += '<section><h3>Get Started — Tools &amp; Resources</h3><div class="aff-list">';
+  b.affiliates.forEach(function(a){
+    html += '<!-- AFFILIATE: '+a.id+' -->';
+    html += '<div class="aff-item"><span>'+a.label+' <span class="aff-disclosure">(affiliate)</span></span>';
+    html += '<a class="aff-cta" href="#" data-aff="'+a.id+'" rel="sponsored nofollow" target="_blank">'+a.cta+' →</a></div>';
+  });
+  html += '</div></section>';
+
+  // === PRO SECTIONS ===
+  if(!state.isPro){
+    html += '<div class="pro-locked"><strong>&#128274; Pro Pack — $19</strong><p>Unlock cold email template, ROI calculator, and startup checklist for this business.</p><button class="btn btn-gold" data-action="open-unlock">Unlock Pro →</button></div>';
+  } else {
+    // Cold Email Template
+    var industry = b.industry;
+    if(EMAIL_TEMPLATES[industry]){
+      var tpl = EMAIL_TEMPLATES[industry];
+      html += '<div class="pro-section"><span class="pro-tag">PRO</span><h3>Cold Email Template</h3>';
+      html += '<div class="email-tpl"><div class="subj">Subject: '+tpl.subject+'</div>'+tpl.body.replace(/\n/g,'<br>')+'</div>';
+      html += '<button class="btn" style="margin-top:.5rem" onclick="copyEmail(\''+industry+'\')">Copy to clipboard</button>';
+      html += '</div>';
+    }
+    // ROI Calculator
+    if(ROI_CALCS[b.id]){
+      var rc = ROI_CALCS[b.id];
+      html += '<div class="pro-section"><span class="pro-tag">PRO</span><h3>'+rc.label+'</h3>';
+      html += '<div class="roi-calc"><div class="roi-inputs">';
+      rc.inputs.forEach(function(inp){
+        html += '<div class="roi-input"><label for="'+inp.id+'">'+inp.label+'</label>';
+        html += '<input type="number" id="'+inp.id+'" value="'+inp.val+'" onchange="updateROI(\''+b.id+'\')"></div>';
+      });
+      html += '</div><div class="roi-output" id="roi-out-'+b.id+'">';
+      var initVals = {};
+      rc.inputs.forEach(function(inp){initVals[inp.id]=inp.val});
+      rc.calc(initVals).forEach(function(o){
+        html += '<div class="o"><span class="l">'+o.l+'</span><span class="v">'+o.v+'</span></div>';
+      });
+      html += '</div></div>';
+      html += '<button class="btn" style="margin-top:.5rem" onclick="window.print()">Export as PDF (Print)</button>';
+      html += '</div>';
+    }
+    // Startup Checklist
+    html += '<div class="pro-section"><span class="pro-tag">PRO</span><h3>Startup Checklist</h3>';
+    html += '<ul class="checklist">';
+    CHECKLIST.forEach(function(item,i){
+      html += '<li><input type="checkbox" id="ck_'+b.id+'_'+i+'"><label for="ck_'+b.id+'_'+i+'">'+item+'</label></li>';
+    });
+    html += '</ul></div>';
+  }
+
+  document.getElementById('modalBody').innerHTML = html;
+  modal.classList.add('open');
+}
+
+/* ============ ROI UPDATE ============ */
+function updateROI(bizId){
+  var rc = ROI_CALCS[bizId];
+  if(!rc) return;
+  var vals = {};
+  rc.inputs.forEach(function(inp){
+    vals[inp.id] = parseFloat(document.getElementById(inp.id).value)||0;
+  });
+  var results = rc.calc(vals);
+  var out = document.getElementById('roi-out-'+bizId);
+  if(!out) return;
+  var html = '';
+  results.forEach(function(o){
+    html += '<div class="o"><span class="l">'+o.l+'</span><span class="v">'+o.v+'</span></div>';
+  });
+  out.innerHTML = html;
+}
+
+/* ============ COPY EMAIL ============ */
+function copyEmail(industry){
+  var tpl = EMAIL_TEMPLATES[industry];
+  if(!tpl) return;
+  var text = 'Subject: '+tpl.subject+'\n\n'+tpl.body;
+  navigator.clipboard.writeText(text).then(function(){toast('Email copied!')}).catch(function(){toast('Copy failed — select manually')});
+}
+
+/* ============ GLOBAL ACTIONS ============ */
+document.addEventListener('click', function(e){
+  var t = e.target.closest('[data-action]');
+  if(!t) return;
+  var a = t.dataset.action;
+  if(a==='open-unlock') document.getElementById('unlockModal').classList.add('open');
+  if(a==='close-unlock') document.getElementById('unlockModal').classList.remove('open');
+  if(a==='close-modal') document.getElementById('modal').classList.remove('open');
+  if(a==='dismiss-banner'){sessionStorage.setItem('proBannerDismissed','1');document.getElementById('proBanner').style.display='none'}
+  if(a==='simulate-pro'){
+    localStorage.setItem('boringMoneyPro','true');
+    state.isPro=true;
+    document.body.classList.add('is-pro');
+    document.getElementById('unlockModal').classList.remove('open');
+    toast('Pro unlocked — enjoy all 30 businesses.');
+    render();
+  }
+  if(a==='shuffle') shuffle();
+  if(a==='reset') resetFilters();
+});
+
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape') document.querySelectorAll('.modal-backdrop.open').forEach(function(m){m.classList.remove('open')});
+});
+document.querySelectorAll('.modal-backdrop').forEach(function(bd){
+  bd.addEventListener('click',function(e){if(e.target===bd)bd.classList.remove('open')});
+});
+
+/* ============ INIT ============ */
+detectPro();
+render();
+</script>
+</body>
+</html>
