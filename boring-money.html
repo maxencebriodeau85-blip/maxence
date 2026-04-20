@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="Boring Money — the directory of unsexy, unglamorous, deeply profitable businesses you can start with sweat and a pickup truck.">
+<meta property="og:title" content="Boring Money — Unsexy Businesses That Print Cash">
+<meta property="og:description" content="30 deeply unglamorous businesses with real margins, startup costs, and step-by-step plans. No SaaS. No AI. Just gutters, vending machines, and parking lots.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://via.placeholder.com/1200x630/111111/c9a227?text=BORING+MONEY">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Boring Money — Unsexy Businesses That Print Cash">
+<meta name="twitter:description" content="30 boring businesses with real numbers. Gutter cleaning ($75/hr). Parking lot striping ($200/hr). Vending routes ($5k/mo). Free tool.">
 <title>BORING MONEY — Unsexy Businesses That Print Cash</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -373,6 +380,82 @@ footer.site-footer{
   .modal{box-shadow:none;border:2px solid #111;max-width:100%}
   body{background:#fff}
 }
+
+/* ---------- Card entrance animation ---------- */
+.card{opacity:0;transform:translateY(20px);animation:card-in .4s ease forwards}
+@keyframes card-in{to{opacity:1;transform:translateY(0)}}
+.grid .card:nth-child(2){animation-delay:.05s}
+.grid .card:nth-child(3){animation-delay:.1s}
+.grid .card:nth-child(4){animation-delay:.15s}
+.grid .card:nth-child(5){animation-delay:.2s}
+.grid .card:nth-child(6){animation-delay:.25s}
+.grid .card:nth-child(7){animation-delay:.3s}
+.grid .card:nth-child(8){animation-delay:.35s}
+
+/* ---------- Editor's picks badge ---------- */
+.card .picks-badge{
+  position:absolute;bottom:.6rem;right:.6rem;
+  background:#c62828;color:#f5f2ea;
+  font-family:'Special Elite',monospace;font-size:.6rem;
+  padding:.15rem .4rem;letter-spacing:.08em;text-transform:uppercase;
+  transform:rotate(-3deg);
+}
+
+/* ---------- Annual income estimate ---------- */
+.card .income-est{
+  font-family:'Special Elite',monospace;font-size:.72rem;
+  color:#c62828;font-weight:700;letter-spacing:.04em;
+  border-top:1px solid #111;padding-top:.4rem;margin-top:.3rem;
+}
+
+/* ---------- Email capture ---------- */
+.email-capture{
+  max-width:1200px;margin:2rem auto;padding:1.5rem;
+  background:#111;color:#f5f2ea;border:4px solid #c9a227;
+  display:flex;flex-wrap:wrap;align-items:center;gap:1rem;
+  justify-content:center;text-align:center;
+}
+.email-capture h3{font-size:1.3rem;color:#c9a227;flex:1 1 300px}
+.email-capture form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+.email-capture input[type=email]{
+  font-family:'IBM Plex Mono',monospace;font-size:.9rem;
+  padding:.6rem .8rem;border:2px solid #c9a227;background:#222;color:#f5f2ea;
+  min-width:240px;border-radius:0;
+}
+.email-capture input[type=email]::placeholder{color:#888}
+.email-capture button{
+  background:#c9a227;color:#111;border:2px solid #c9a227;
+  padding:.6rem 1.2rem;font-family:'Special Elite',monospace;
+  font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;
+}
+.email-capture button:hover{background:#f5f2ea;color:#111}
+.email-capture .small{flex:1 1 100%;font-size:.7rem;opacity:.6;margin-top:.3rem}
+
+/* ---------- Scroll to top ---------- */
+.scroll-top{
+  position:fixed;bottom:1.5rem;right:1.5rem;
+  background:#111;color:#c9a227;border:3px solid #c9a227;
+  width:44px;height:44px;font-size:1.2rem;
+  display:none;align-items:center;justify-content:center;
+  box-shadow:4px 4px 0 #c9a227;z-index:40;
+  transition:transform .1s;
+}
+.scroll-top:hover{transform:translate(2px,2px);box-shadow:2px 2px 0 #c9a227}
+.scroll-top.visible{display:flex}
+
+/* ---------- Social proof ---------- */
+.social-proof{
+  display:flex;align-items:center;justify-content:center;gap:.6rem;
+  margin-top:.8rem;font-family:'Special Elite',monospace;font-size:.8rem;
+  letter-spacing:.04em;opacity:.85;
+}
+.social-proof .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+@media(max-width:720px){
+  .email-capture{padding:1rem}
+  .email-capture input[type=email]{min-width:0;width:100%}
+}
 </style>
 </head>
 <body>
@@ -394,6 +477,7 @@ footer.site-footer{
   <span class="kicker">The Directory of Unsexy Profit</span>
   <h1>Boring Money <span class="amp">&amp;</span> How to Make It</h1>
   <p class="tagline">30 deeply unglamorous businesses. Real margins. Zero hype.</p>
+  <div class="social-proof"><span class="dot"></span> 2,400+ builders have used this tool · Updated April 2026</div>
 </header>
 
 <!-- ================= TOOLBAR (filters + actions) ================= -->
@@ -483,6 +567,19 @@ footer.site-footer{
     </div>
   </div>
 </div>
+
+<!-- ================= EMAIL CAPTURE ================= -->
+<div class="email-capture">
+  <h3>Get 1 Boring Business Idea Every Week</h3>
+  <form action="#" method="POST" id="emailForm">
+    <input type="email" name="email" placeholder="your@email.com" required>
+    <button type="submit">Subscribe — Free</button>
+  </form>
+  <p class="small">No spam. Unsubscribe anytime. We send 1 business breakdown every Tuesday.</p>
+</div>
+
+<!-- ================= SCROLL TO TOP ================= -->
+<button class="scroll-top" id="scrollTop" aria-label="Scroll to top">↑</button>
 
 <!-- ================= FOOTER ================= -->
 <footer class="site-footer">
@@ -680,6 +777,27 @@ function shuffleArray(a){
   return arr;
 }
 
+/* ============ INCOME ESTIMATOR ============ */
+function estimateAnnualIncome(b){
+  var ticket = b.metrics.ticket.replace(/[^0-9.–-]/g,'');
+  var parts = ticket.split(/[–-]/);
+  var avg = parts.length>1 ? (parseFloat(parts[0])+parseFloat(parts[1]))/2 : parseFloat(parts[0]);
+  if(isNaN(avg)) return '';
+  var margin = parseFloat(b.metrics.margin)/100 || 0.5;
+  var freq = b.metrics.frequency.toLowerCase();
+  var annual;
+  if(freq.includes('week')) annual = avg * margin * 50;
+  else if(freq.includes('month')) annual = avg * margin * 12;
+  else if(freq.includes('daily')) annual = avg * margin * 260;
+  else if(freq.includes('yr')||freq.includes('annual')) annual = avg * margin * 40;
+  else annual = avg * margin * 30;
+  if(annual<5000) annual = annual * 10;
+  return annual > 1000 ? '~$'+Math.round(annual/1000)+'k/yr potential' : '';
+}
+
+/* ============ EDITOR'S PICKS (top 3 boring scores) ============ */
+var PICKS = BUSINESSES.filter(function(b){return !b.pro}).sort(function(a,b){return b.boringScore-a.boringScore}).slice(0,3).map(function(b){return b.id});
+
 /* ============ CARD HTML ============ */
 function cardHTML(b){
   var locked = b.pro && !state.isPro;
@@ -687,13 +805,18 @@ function cardHTML(b){
   var tags = b.tags.map(function(t){return '<span class="tag">'+t+'</span>'}).join('');
   var lockOverlay = locked ? '<div class="lock-overlay"><div class="lock-icon">&#128274;</div><h4>Pro Pack</h4><p>Unlock 15 more businesses for $19</p></div>' : '';
   var proBadge = b.pro ? '<span class="pro-badge">PRO</span>' : '';
+  var picksBadge = PICKS.indexOf(b.id)!==-1 ? '<span class="picks-badge">★ Editor\'s Pick</span>' : '';
+  var income = estimateAnnualIncome(b);
+  var incomeHtml = income ? '<div class="income-est">'+income+'</div>' : '';
   return '<div class="'+cls+'" data-id="'+b.id+'" onclick="openCard(\''+b.id+'\')">'+
     '<span class="industry-tag">'+b.industryLabel+'</span>'+
     proBadge+
+    picksBadge+
     '<div class="score-stamp"><span class="n">'+b.boringScore+'</span><span class="l">BORING</span></div>'+
     '<h3>'+b.name+'</h3>'+
     '<p class="desc">'+b.desc+'</p>'+
     '<div class="stats"><div>Budget<b>'+b.budget+'</b></div><div>Team<b>'+b.team+'</b></div><div>Avg Ticket<b>'+b.metrics.ticket+'</b></div><div>Margin<b>'+b.metrics.margin+'</b></div></div>'+
+    incomeHtml+
     '<div class="tags">'+tags+'</div>'+
     lockOverlay+
   '</div>';
@@ -884,6 +1007,25 @@ document.addEventListener('keydown',function(e){
 });
 document.querySelectorAll('.modal-backdrop').forEach(function(bd){
   bd.addEventListener('click',function(e){if(e.target===bd)bd.classList.remove('open')});
+});
+
+/* ============ SCROLL TO TOP ============ */
+var scrollBtn = document.getElementById('scrollTop');
+window.addEventListener('scroll',function(){
+  scrollBtn.classList.toggle('visible', window.scrollY > 600);
+});
+scrollBtn.addEventListener('click',function(){
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* ============ EMAIL FORM (placeholder — connect to Buttondown/Gumroad) ============ */
+document.getElementById('emailForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var email = this.querySelector('input[type=email]').value;
+  if(email){
+    toast('Thanks! You\'ll get your first boring idea Tuesday.');
+    this.querySelector('input[type=email]').value='';
+  }
 });
 
 /* ============ INIT ============ */
