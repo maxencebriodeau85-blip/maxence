@@ -452,9 +452,151 @@ footer.site-footer{
 .social-proof .dot{width:8px;height:8px;border-radius:50%;background:#4caf50;animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 
+/* ---------- Quiz wizard ---------- */
+.quiz{
+  max-width:1200px;margin:0 auto;padding:1.5rem 1.25rem;
+  border-bottom:3px solid #111;
+}
+.quiz-header{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  cursor:pointer;
+}
+.quiz-header h2{font-size:1.3rem;text-transform:uppercase}
+.quiz-header .toggle{font-size:1.5rem;transition:transform .2s}
+.quiz-header .toggle.open{transform:rotate(45deg)}
+.quiz-body{display:none;margin-top:1rem}
+.quiz-body.open{display:block}
+.quiz-step{display:none}
+.quiz-step.active{display:block}
+.quiz-q{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:.8rem}
+.quiz-options{display:flex;flex-wrap:wrap;gap:.6rem}
+.quiz-opt{
+  flex:1 1 140px;
+  border:3px solid #111;background:#fff;padding:.8rem;
+  text-align:center;font-family:'Special Elite',monospace;
+  font-size:.85rem;letter-spacing:.04em;
+  transition:all .15s;cursor:pointer;
+}
+.quiz-opt:hover{background:#111;color:#f5f2ea;transform:translate(-2px,-2px);box-shadow:4px 4px 0 #111}
+.quiz-opt.selected{background:#c9a227;color:#111;border-color:#111;box-shadow:4px 4px 0 #111}
+.quiz-progress{display:flex;gap:.4rem;margin-bottom:1rem}
+.quiz-progress span{flex:1;height:4px;background:#ddd;border:1px solid #111}
+.quiz-progress span.done{background:#c9a227}
+.quiz-progress span.current{background:#c62828}
+.quiz-result{
+  border:4px solid #c9a227;background:#fff8e1;padding:1.5rem;text-align:center;
+  margin-top:1rem;
+}
+.quiz-result h3{font-size:1.8rem;color:#111;margin-bottom:.4rem}
+.quiz-result .match{font-family:'Special Elite',monospace;font-size:.85rem;color:#c62828}
+.quiz-result .quiz-cta{margin-top:1rem}
+
+/* ---------- Sort dropdown ---------- */
+.sort-group{
+  display:flex;align-items:center;gap:.4rem;
+  font-family:'Special Elite',monospace;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;
+}
+.sort-group select{
+  font-family:'IBM Plex Mono',monospace;font-size:.85rem;
+  background:#f5f2ea;border:2px solid #111;padding:.45rem .6rem;border-radius:0;
+}
+
+/* ---------- Active filter chips ---------- */
+.filter-chips{
+  max-width:1200px;margin:0 auto;padding:.5rem 1.25rem;
+  display:flex;flex-wrap:wrap;gap:.4rem;
+}
+.filter-chips:empty{display:none}
+.chip{
+  font-family:'Special Elite',monospace;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+  background:#111;color:#f5f2ea;padding:.25rem .6rem;
+  display:flex;align-items:center;gap:.4rem;
+  border:2px solid #111;
+}
+.chip .x{cursor:pointer;color:#c9a227;font-size:.9rem;line-height:1}
+.chip .x:hover{color:#c62828}
+
+/* ---------- Modal slide-up animation ---------- */
+.modal-backdrop .modal{
+  transform:translateY(30px);opacity:0;
+  transition:transform .25s ease, opacity .2s ease;
+}
+.modal-backdrop.open .modal{
+  transform:translateY(0);opacity:1;
+}
+
+/* ---------- Similar businesses ---------- */
+.similar{display:flex;gap:.6rem;overflow-x:auto;padding:.5rem 0}
+.similar-card{
+  flex:0 0 200px;border:2px solid #111;background:#fff;padding:.6rem;
+  cursor:pointer;transition:transform .1s;
+  font-size:.8rem;
+}
+.similar-card:hover{transform:translateY(-3px);box-shadow:3px 3px 0 #111}
+.similar-card h4{font-family:'Playfair Display',serif;font-size:1rem;margin-bottom:.3rem}
+.similar-card .s-meta{font-family:'Special Elite',monospace;font-size:.65rem;color:#555}
+
+/* ---------- Share button ---------- */
+.share-btn{
+  display:inline-flex;align-items:center;gap:.4rem;
+  background:#111;color:#c9a227;
+  border:2px solid #c9a227;padding:.4rem .8rem;
+  font-family:'Special Elite',monospace;font-size:.75rem;letter-spacing:.06em;
+  cursor:pointer;text-transform:uppercase;
+}
+.share-btn:hover{background:#c9a227;color:#111}
+
+/* ---------- Compare mode ---------- */
+.compare-bar{
+  position:fixed;bottom:0;left:0;right:0;
+  background:#111;color:#f5f2ea;border-top:3px solid #c9a227;
+  padding:.6rem 1rem;
+  display:none;align-items:center;justify-content:center;gap:1rem;
+  z-index:60;font-family:'Special Elite',monospace;font-size:.82rem;
+}
+.compare-bar.visible{display:flex}
+.compare-bar .names{color:#c9a227}
+.compare-modal .compare-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;
+}
+.compare-modal .compare-col{
+  border:3px solid #111;padding:1rem;background:#fff;
+}
+.compare-modal .compare-col h3{font-size:1.1rem;margin-bottom:.5rem;text-transform:uppercase}
+.compare-modal .compare-row{
+  display:flex;justify-content:space-between;padding:.3rem 0;
+  border-bottom:1px dashed #ccc;font-size:.82rem;
+}
+.compare-modal .compare-row:last-child{border-bottom:none}
+.compare-modal .compare-row .label{font-family:'Special Elite',monospace;font-size:.7rem;text-transform:uppercase;opacity:.7}
+.compare-modal .compare-row .value{font-weight:700}
+
+/* ---------- Mobile filter toggle ---------- */
+.filter-toggle{
+  display:none;
+  background:#111;color:#f5f2ea;border:2px solid #111;
+  padding:.5rem 1rem;width:100%;text-align:left;
+  font-family:'Special Elite',monospace;font-size:.85rem;letter-spacing:.06em;
+  justify-content:space-between;align-items:center;
+}
+.filter-toggle .arrow{transition:transform .2s}
+.filter-toggle .arrow.open{transform:rotate(180deg)}
+
 @media(max-width:720px){
+  .filter-toggle{display:flex}
+  .filters{display:none;flex-direction:column}
+  .filters.mobile-open{display:flex}
+  .toolbar{grid-template-columns:1fr}
+  .actions{justify-content:flex-start}
+  .masthead h1{font-size:clamp(2.2rem,10vw,4rem)}
+  .modal-body{padding:1rem}
+  .card{min-height:auto}
+  .filters select,.filters input[type=search]{min-width:0;width:100%}
+  .filters label{flex:1 1 40%}
   .email-capture{padding:1rem}
   .email-capture input[type=email]{min-width:0;width:100%}
+  .quiz-opt{flex:1 1 100%}
+  .compare-bar{flex-wrap:wrap;font-size:.72rem}
 }
 </style>
 </head>
@@ -480,8 +622,48 @@ footer.site-footer{
   <div class="social-proof"><span class="dot"></span> 2,400+ builders have used this tool · Updated April 2026</div>
 </header>
 
+<!-- ================= QUIZ ================= -->
+<div class="quiz" id="quiz">
+  <div class="quiz-header" id="quizToggle">
+    <h2>Find My Boring Business</h2>
+    <span class="toggle" id="quizArrow">+</span>
+  </div>
+  <div class="quiz-body" id="quizBody">
+    <div class="quiz-progress"><span id="qp1"></span><span id="qp2"></span><span id="qp3"></span></div>
+    <div class="quiz-step active" id="qs1">
+      <p class="quiz-q">How much can you invest to start?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt" data-step="1" data-val="low">Under $5k</div>
+        <div class="quiz-opt" data-step="1" data-val="mid">$5k – $25k</div>
+        <div class="quiz-opt" data-step="1" data-val="high">$25k+</div>
+      </div>
+    </div>
+    <div class="quiz-step" id="qs2">
+      <p class="quiz-q">Do you want to work alone or with a team?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt" data-step="2" data-val="solo">Solo — just me</div>
+        <div class="quiz-opt" data-step="2" data-val="small">Small crew (2–4)</div>
+        <div class="quiz-opt" data-step="2" data-val="any">Don't care</div>
+      </div>
+    </div>
+    <div class="quiz-step" id="qs3">
+      <p class="quiz-q">What kind of work appeals to you?</p>
+      <div class="quiz-options">
+        <div class="quiz-opt" data-step="3" data-val="physical">Physical / outdoors</div>
+        <div class="quiz-opt" data-step="3" data-val="mobile">Driving / mobile service</div>
+        <div class="quiz-opt" data-step="3" data-val="passive">Semi-passive / assets</div>
+        <div class="quiz-opt" data-step="3" data-val="any">Anything that pays</div>
+      </div>
+    </div>
+    <div class="quiz-step" id="qs-result"></div>
+  </div>
+</div>
+
 <!-- ================= TOOLBAR (filters + actions) ================= -->
 <div class="toolbar">
+  <button class="filter-toggle" id="filterToggle">
+    Filters <span class="arrow" id="filterArrow">▼</span>
+  </button>
   <div class="filters" id="filters">
     <label>Industry
       <select id="f-industry">
@@ -515,11 +697,25 @@ footer.site-footer{
     </label>
   </div>
   <div class="actions">
+    <div class="sort-group">
+      <label>Sort</label>
+      <select id="f-sort">
+        <option value="">Default</option>
+        <option value="boring-desc">Most Boring</option>
+        <option value="boring-asc">Least Boring</option>
+        <option value="budget-asc">Budget: Low → High</option>
+        <option value="budget-desc">Budget: High → Low</option>
+      </select>
+    </div>
     <button class="btn" data-action="reset">Reset</button>
     <button class="btn btn-primary" data-action="shuffle">Shuffle →</button>
+    <button class="btn" data-action="toggle-compare" id="compareToggleBtn">Compare</button>
     <button class="btn btn-gold" data-action="open-unlock" id="unlockBtn">★ Pro $19</button>
   </div>
 </div>
+
+<!-- ================= FILTER CHIPS ================= -->
+<div class="filter-chips" id="filterChips"></div>
 
 <!-- ================= CARDS GRID (populated by JS) ================= -->
 <main class="grid" id="grid" aria-live="polite"></main>
@@ -576,6 +772,24 @@ footer.site-footer{
     <button type="submit">Subscribe — Free</button>
   </form>
   <p class="small">No spam. Unsubscribe anytime. We send 1 business breakdown every Tuesday.</p>
+</div>
+
+<!-- ================= COMPARE BAR ================= -->
+<div class="compare-bar" id="compareBar">
+  <span>Comparing: <span class="names" id="compareNames">—</span></span>
+  <button class="btn btn-gold" data-action="view-compare" style="padding:.3rem .8rem;box-shadow:none">Compare Now</button>
+  <button class="btn" data-action="clear-compare" style="padding:.3rem .8rem;box-shadow:none">Clear</button>
+</div>
+
+<!-- ================= COMPARE MODAL ================= -->
+<div class="modal-backdrop compare-modal" id="compareModal" role="dialog" aria-modal="true">
+  <div class="modal" style="max-width:960px">
+    <div class="modal-head">
+      <div><h2>Side-by-Side Comparison</h2></div>
+      <button class="modal-close" data-action="close-compare" aria-label="Close">×</button>
+    </div>
+    <div class="modal-body" id="compareBody"></div>
+  </div>
 </div>
 
 <!-- ================= SCROLL TO TOP ================= -->
@@ -721,6 +935,7 @@ const CHECKLIST = [
 const state = {
   filters: { industry:'', budget:'', team:'', search:'' },
   shuffled: false,
+  sort: '',
   order: [],
   isPro: false
 };
@@ -808,7 +1023,9 @@ function cardHTML(b){
   var picksBadge = PICKS.indexOf(b.id)!==-1 ? '<span class="picks-badge">★ Editor\'s Pick</span>' : '';
   var income = estimateAnnualIncome(b);
   var incomeHtml = income ? '<div class="income-est">'+income+'</div>' : '';
-  return '<div class="'+cls+'" data-id="'+b.id+'" onclick="openCard(\''+b.id+'\')">'+
+  var compareCheck = state.compareMode && !locked ? '<input type="checkbox" style="position:absolute;top:.5rem;left:.5rem;accent-color:#c9a227;transform:scale(1.4);z-index:3"'+(state.compareIds.indexOf(b.id)!==-1?' checked':'')+' onclick="event.stopPropagation();toggleCompareCard(\''+b.id+'\')">' : '';
+  return '<div class="'+cls+(state.compareIds.indexOf(b.id)!==-1?' selected':'')+'" data-id="'+b.id+'" onclick="openCard(\''+b.id+'\')">'+
+    compareCheck+
     '<span class="industry-tag">'+b.industryLabel+'</span>'+
     proBadge+
     picksBadge+
@@ -830,6 +1047,8 @@ function render(){
   var ff = filterBiz(free);
   var pf = filterBiz(pro);
   if(state.shuffled){ff=shuffleArray(ff);pf=shuffleArray(pf);}
+  else{ff=sortBiz(ff);pf=sortBiz(pf);}
+  renderChips();
   var html = '';
   html += '<div class="grid-heading"><h2>Free Businesses</h2><span class="meta">'+ff.length+' of '+free.length+' ideas</span></div>';
   if(ff.length===0) html+='<div class="empty-state">No matches — try different filters.</div>';
@@ -850,11 +1069,14 @@ function shuffle(){
 }
 function resetFilters(){
   state.filters = {industry:'',budget:'',team:'',search:''};
+  state.sort = '';
   document.getElementById('f-industry').value='';
   document.getElementById('f-budget').value='';
   document.getElementById('f-team').value='';
   document.getElementById('f-search').value='';
+  document.getElementById('f-sort').value='';
   render();
+  renderChips();
   toast('Filters reset');
 }
 
@@ -909,6 +1131,23 @@ function openCard(id){
     html += '<a class="aff-cta" href="#" data-aff="'+a.id+'" rel="sponsored nofollow" target="_blank">'+a.cta+' →</a></div>';
   });
   html += '</div></section>';
+
+  // Share + Similar
+  html += '<section style="display:flex;align-items:center;gap:.8rem;flex-wrap:wrap">';
+  html += '<button class="share-btn" onclick="shareBusiness(\''+b.id+'\')">Share This Business</button>';
+  html += '<span class="meta" style="opacity:.6">Direct link copied to clipboard</span>';
+  html += '</section>';
+  var similar = getSimilar(b, 3);
+  if(similar.length > 0){
+    html += '<section><h3>Similar Businesses</h3><div class="similar">';
+    similar.forEach(function(s){
+      html += '<div class="similar-card" onclick="openCard(\''+s.id+'\')">';
+      html += '<h4>'+s.name+'</h4>';
+      html += '<p class="s-meta">'+s.metrics.ticket+' · '+s.metrics.margin+' margin'+(s.pro?' · PRO':'')+'</p>';
+      html += '</div>';
+    });
+    html += '</div></section>';
+  }
 
   // === PRO SECTIONS ===
   if(!state.isPro){
@@ -1000,6 +1239,10 @@ document.addEventListener('click', function(e){
   }
   if(a==='shuffle') shuffle();
   if(a==='reset') resetFilters();
+  if(a==='toggle-compare') toggleCompare();
+  if(a==='view-compare') viewCompare();
+  if(a==='clear-compare'){state.compareIds=[];updateCompareBar();render();}
+  if(a==='close-compare') document.getElementById('compareModal').classList.remove('open');
 });
 
 document.addEventListener('keydown',function(e){
@@ -1007,6 +1250,187 @@ document.addEventListener('keydown',function(e){
 });
 document.querySelectorAll('.modal-backdrop').forEach(function(bd){
   bd.addEventListener('click',function(e){if(e.target===bd)bd.classList.remove('open')});
+});
+
+/* ============ SORT ============ */
+var BUDGET_ORDER = {low:1,mid:2,high:3};
+document.getElementById('f-sort').addEventListener('change',function(){
+  state.sort = this.value;
+  render();
+});
+
+/* ============ FILTER CHIPS ============ */
+function renderChips(){
+  var el = document.getElementById('filterChips');
+  var html = '';
+  var labels = {industry:'Industry',budget:'Budget',team:'Team',search:'Search'};
+  var vals = {industry:document.getElementById('f-industry'),budget:document.getElementById('f-budget'),team:document.getElementById('f-team')};
+  Object.keys(state.filters).forEach(function(k){
+    if(state.filters[k]){
+      var display = vals[k] ? vals[k].options[vals[k].selectedIndex].text : state.filters[k];
+      html += '<span class="chip">'+labels[k]+': '+display+' <span class="x" data-clear="'+k+'">×</span></span>';
+    }
+  });
+  el.innerHTML = html;
+  el.querySelectorAll('.x').forEach(function(x){
+    x.addEventListener('click',function(){
+      var k = this.dataset.clear;
+      state.filters[k] = '';
+      if(k==='search') document.getElementById('f-search').value='';
+      else document.getElementById('f-'+k).value='';
+      render(); renderChips();
+    });
+  });
+}
+
+/* ============ SORT HELPER ============ */
+function sortBiz(list){
+  if(!state.sort) return list;
+  var arr = list.slice();
+  if(state.sort==='boring-desc') arr.sort(function(a,b){return b.boringScore-a.boringScore});
+  if(state.sort==='boring-asc') arr.sort(function(a,b){return a.boringScore-b.boringScore});
+  if(state.sort==='budget-asc') arr.sort(function(a,b){return (BUDGET_ORDER[a.budgetTier]||2)-(BUDGET_ORDER[b.budgetTier]||2)});
+  if(state.sort==='budget-desc') arr.sort(function(a,b){return (BUDGET_ORDER[b.budgetTier]||2)-(BUDGET_ORDER[a.budgetTier]||2)});
+  return arr;
+}
+
+/* ============ COMPARE MODE ============ */
+state.compareMode = false;
+state.compareIds = [];
+
+function toggleCompare(){
+  state.compareMode = !state.compareMode;
+  document.getElementById('compareToggleBtn').textContent = state.compareMode ? 'Exit Compare' : 'Compare';
+  if(!state.compareMode){state.compareIds=[];updateCompareBar();}
+  render();
+}
+function toggleCompareCard(id){
+  var idx = state.compareIds.indexOf(id);
+  if(idx!==-1) state.compareIds.splice(idx,1);
+  else if(state.compareIds.length<3) state.compareIds.push(id);
+  else{toast('Max 3 businesses to compare');return;}
+  updateCompareBar();
+  render();
+}
+function updateCompareBar(){
+  var bar = document.getElementById('compareBar');
+  var names = document.getElementById('compareNames');
+  if(state.compareIds.length>0){
+    bar.classList.add('visible');
+    names.textContent = state.compareIds.map(function(id){
+      var b=BUSINESSES.find(function(x){return x.id===id});
+      return b?b.name:'';
+    }).join(' vs ');
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+function viewCompare(){
+  if(state.compareIds.length<2){toast('Select at least 2 businesses');return;}
+  var bizsToCompare = state.compareIds.map(function(id){return BUSINESSES.find(function(x){return x.id===id})}).filter(Boolean);
+  var html = '<div class="compare-grid">';
+  bizsToCompare.forEach(function(b){
+    html += '<div class="compare-col"><h3>'+b.name+'</h3>';
+    html += '<div class="compare-row"><span class="label">Boring Score</span><span class="value">'+b.boringScore+'/100</span></div>';
+    html += '<div class="compare-row"><span class="label">Budget</span><span class="value">'+b.budget+'</span></div>';
+    html += '<div class="compare-row"><span class="label">Team</span><span class="value">'+b.team+'</span></div>';
+    html += '<div class="compare-row"><span class="label">Avg Ticket</span><span class="value">'+b.metrics.ticket+'</span></div>';
+    html += '<div class="compare-row"><span class="label">Margin</span><span class="value">'+b.metrics.margin+'</span></div>';
+    html += '<div class="compare-row"><span class="label">Frequency</span><span class="value">'+b.metrics.frequency+'</span></div>';
+    html += '<div class="compare-row"><span class="label">Risk</span><span class="value" style="font-size:.75rem">'+b.risk.substring(0,80)+'…</span></div>';
+    html += '</div>';
+  });
+  html += '</div>';
+  document.getElementById('compareBody').innerHTML = html;
+  document.getElementById('compareModal').classList.add('open');
+}
+
+/* ============ SIMILAR BUSINESSES ============ */
+function getSimilar(biz, count){
+  return BUSINESSES.filter(function(b){
+    return b.id !== biz.id && (b.industry === biz.industry || b.budgetTier === biz.budgetTier);
+  }).sort(function(a,b){
+    var scoreA = (a.industry===biz.industry?2:0) + (a.budgetTier===biz.budgetTier?1:0);
+    var scoreB = (b.industry===biz.industry?2:0) + (b.budgetTier===biz.budgetTier?1:0);
+    return scoreB - scoreA;
+  }).slice(0, count);
+}
+
+/* ============ SHARE ============ */
+function shareBusiness(id){
+  var url = location.origin + location.pathname + '#' + id;
+  navigator.clipboard.writeText(url).then(function(){toast('Link copied!')}).catch(function(){
+    prompt('Copy this link:', url);
+  });
+}
+
+/* ============ QUIZ LOGIC ============ */
+var quizAnswers = {};
+document.getElementById('quizToggle').addEventListener('click',function(){
+  var body = document.getElementById('quizBody');
+  var arrow = document.getElementById('quizArrow');
+  body.classList.toggle('open');
+  arrow.classList.toggle('open');
+});
+document.querySelectorAll('.quiz-opt').forEach(function(opt){
+  opt.addEventListener('click',function(){
+    var step = parseInt(this.dataset.step);
+    var val = this.dataset.val;
+    quizAnswers[step] = val;
+    this.parentNode.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('selected')});
+    this.classList.add('selected');
+    document.getElementById('qp'+step).classList.add('done');
+    if(step<3){
+      setTimeout(function(){
+        document.getElementById('qs'+step).classList.remove('active');
+        document.getElementById('qs'+(step+1)).classList.add('active');
+        document.getElementById('qp'+(step+1)).classList.add('current');
+      },300);
+    } else {
+      setTimeout(function(){showQuizResult()},400);
+    }
+  });
+});
+function showQuizResult(){
+  var matches = BUSINESSES.filter(function(b){
+    if(b.pro && !state.isPro) return false;
+    var budgetMatch = !quizAnswers[1] || quizAnswers[1]==='any' || b.budgetTier===quizAnswers[1];
+    var teamMatch = !quizAnswers[2] || quizAnswers[2]==='any' || b.teamTier===quizAnswers[2];
+    var styleMatch = true;
+    if(quizAnswers[3]==='physical') styleMatch = b.tags.some(function(t){return t.includes('physical')||t.includes('outdoor')}) || b.industry==='outdoor';
+    else if(quizAnswers[3]==='mobile') styleMatch = b.tags.some(function(t){return t.includes('mobile')}) || b.industry==='logistics';
+    else if(quizAnswers[3]==='passive') styleMatch = b.tags.some(function(t){return t.includes('passive')||t.includes('asset')||t.includes('semi-passive')}) || b.industry==='vending';
+    return budgetMatch && teamMatch && styleMatch;
+  }).sort(function(a,b){return b.boringScore-a.boringScore});
+  var result = matches[0] || BUSINESSES[0];
+  document.getElementById('qs3').classList.remove('active');
+  var el = document.getElementById('qs-result');
+  el.classList.add('active');
+  el.innerHTML = '<div class="quiz-result">'
+    +'<p class="match">Your best match:</p>'
+    +'<h3>'+result.name+'</h3>'
+    +'<p style="margin:.5rem 0;font-size:.9rem">'+result.desc+'</p>'
+    +'<p style="font-family:Special Elite,monospace;font-size:.8rem">Boring Score: '+result.boringScore+'/100 · Budget: '+result.budget+' · Margin: '+result.metrics.margin+'</p>'
+    +'<div class="quiz-cta"><button class="btn btn-primary" onclick="openCard(\''+result.id+'\')">See Full Breakdown →</button>'
+    +' <button class="btn" onclick="resetQuiz()">Try Again</button></div>'
+    +(matches.length>1?'<p style="margin-top:.8rem;font-size:.8rem;opacity:.7">Also great: '+matches.slice(1,4).map(function(b){return '<a href="#" onclick="openCard(\''+b.id+'\');return false">'+b.name+'</a>'}).join(', ')+'</p>':'')
+    +'</div>';
+}
+function resetQuiz(){
+  quizAnswers={};
+  document.querySelectorAll('.quiz-step').forEach(function(s){s.classList.remove('active')});
+  document.getElementById('qs1').classList.add('active');
+  document.querySelectorAll('.quiz-opt').forEach(function(o){o.classList.remove('selected')});
+  document.querySelectorAll('.quiz-progress span').forEach(function(s){s.classList.remove('done','current')});
+  document.getElementById('qp1').classList.add('current');
+}
+
+/* ============ MOBILE FILTER TOGGLE ============ */
+document.getElementById('filterToggle').addEventListener('click',function(){
+  var f = document.getElementById('filters');
+  var a = document.getElementById('filterArrow');
+  f.classList.toggle('mobile-open');
+  a.classList.toggle('open');
 });
 
 /* ============ SCROLL TO TOP ============ */
@@ -1028,9 +1452,17 @@ document.getElementById('emailForm').addEventListener('submit',function(e){
   }
 });
 
+/* ============ HASH DEEP LINK ============ */
+if(location.hash){
+  var hashId = location.hash.substring(1);
+  setTimeout(function(){openCard(hashId)},500);
+}
+
 /* ============ INIT ============ */
 detectPro();
+document.getElementById('qp1').classList.add('current');
 render();
+renderChips();
 </script>
 </body>
 </html>
